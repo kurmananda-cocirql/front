@@ -41,61 +41,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         {/* Top Bar */}
         <div className="flex justify-between items-center py-4">
-          {/* Logo and Mobile Menu Button */}
-          <div className="flex items-center">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="md:hidden mr-4 text-amber-900"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-            </motion.button>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold text-amber-900 flex items-center"
-              href='/'
-            >
-              <span className="bg-gradient-to-br from-amber-600 to-amber-800 text-amber-50 px-2 py-1 rounded-lg mr-1 shadow-md">co</span>
-              <span className="italic font-serif font-extrabold tracking-tight">cirql</span>
-            </motion.a>
-          </div>
-          
-          {/* Desktop Search */}
-          <motion.form 
-            onSubmit={handleSearch} 
-            className="hidden md:block relative w-1/3"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="relative">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search for courses, programs..."
-                className="w-full px-4 py-2 pl-10 border-2 border-amber-300 rounded-full focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white/80 backdrop-blur-sm placeholder-amber-600/70 text-amber-900 shadow-sm"
-              />
-              <FiSearch className="absolute left-3 top-3 text-amber-600" />
-              <AnimatePresence>
-                {searchQuery && (
-                  <motion.button
-                    type="button"
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-2.5 text-amber-600"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    <FiX size={18} />
-                  </motion.button>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.form>
-          
-          {/* Right Side Icons */}
+          {/* Left Side: Search bar */}
           <div className="flex items-center space-x-4">
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -105,6 +51,20 @@ const Navbar = () => {
             >
               <FiSearch size={20} />
             </motion.button>
+            
+            {/* Auth Button with Transition */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center px-4 py-2 bg-gradient-to-br from-amber-600 to-amber-800 text-amber-50 rounded-full hover:shadow-md transition-all shadow-sm"
+              onClick={toggleAuth}
+            >
+              <FiUser className="mr-2" />
+              <span className="hidden md:inline">
+                {isLoggedIn ? 'Profile' : 'Sign In'}
+              </span>
+            </motion.button>
+
             
             {/* Shopping Cart with Animation */}
             <motion.button 
@@ -123,18 +83,54 @@ const Navbar = () => {
               </motion.span>
             </motion.button>
             
-            {/* Auth Button with Transition */}
-            <motion.button
+          </div>
+
+          {/* Center: Logo (Centered exactly in the middle) */}
+          <div className="flex justify-center items-center absolute left-0 right-0">
+            <motion.a
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center px-4 py-2 bg-gradient-to-br from-amber-600 to-amber-800 text-amber-50 rounded-full hover:shadow-md transition-all shadow-sm"
-              onClick={toggleAuth}
+              className="text-2xl font-bold text-amber-900 flex items-center"
+              href='/'
             >
-              <FiUser className="mr-2" />
-              <span className="hidden md:inline">
-                {isLoggedIn ? 'Profile' : 'Sign In'}
-              </span>
-            </motion.button>
+              <span className="bg-gradient-to-br from-amber-600 to-amber-800 text-amber-50 px-2 py-1 rounded-lg mr-1 shadow-md">co</span>
+              <span className="italic font-serif font-extrabold tracking-tight">cirql</span>
+            </motion.a>
+          </div>
+
+          {/* Right Side Icons */}
+          <div className="flex items-center w-1/3">
+            <motion.form 
+              onSubmit={handleSearch} 
+              className="relative w-full"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search for courses, programs..."
+                  className="w-full px-4 py-2 pl-10 border-2 border-amber-300 rounded-full focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white/80 backdrop-blur-sm placeholder-amber-600/70 text-amber-900 shadow-sm"
+                />
+                <FiSearch className="absolute left-3 top-3 text-amber-600" />
+                <AnimatePresence>
+                  {searchQuery && (
+                    <motion.button
+                      type="button"
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-3 top-2.5 text-amber-600"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <FiX size={18} />
+                    </motion.button>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.form>
           </div>
         </div>
 

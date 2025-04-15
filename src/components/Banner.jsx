@@ -86,7 +86,7 @@ const Banner = () => {
   const extendedItems = [bannerItems[bannerItems.length - 1], ...bannerItems, bannerItems[0]];
 
   return (
-    <div className="relative w-full overflow-hidden rounded-xl bg-amber-50 py-8 h-[300px] lg:h-[450px]">
+    <div className="relative w-full overflow-hidden rounded-xl bg-amber-50 h-[300px] lg:h-[300px]">
       {/* Left Navigation Button */}
       <button 
         onClick={handlePrev}

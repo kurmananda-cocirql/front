@@ -22,110 +22,97 @@ const App = () => {
 
   return (
     <>
-    
-    <div className="fixed top-0 left-0 w-full h-screen z-[-10]">
-        <SignupHero />
-      </div>
-    <div className="min-h-screen ">
-      {/* Animated background elements */}
-      
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {[...Array(10)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-amber-200/20"
-            initial={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 300 + 100}px`,
-              height: `${Math.random() * 300 + 100}px`,
-              opacity: 0.2
-            }}
-            animate={{
-              x: [0, Math.random() * 100 - 50],
-              y: [0, Math.random() * 100 - 50],
-              rotate: [0, 360]
-            }}
-            transition={{
-              duration: Math.random() * 30 + 20,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "linear"
-            }}
-          />
-        ))}
-      </div>
 
-      <Navbar />
-      <div className='bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50'>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-[10]"
-      >
-        <div className="container mx-auto py-8 ">
-          {/* Hero Section */}
-          <div className="text-center mb-16">
-            <motion.h1
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-amber-900 mb-4"
-            >
-              Some <span className="text-amber-600">Text</span>
-            </motion.h1>
-          </div>
+      <div className="fixed left-0 w-full h-auto z-[-10] bottom-0">
+        <Footer />
+      </div>
+      <div className="min-h-screen ">
+        {/* Animated background elements */}
 
-          {/* Banner Component */}
+        <div className="fixed inset-0 overflow-hidden pointer-events-none">
+          {[...Array(10)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-amber-200/20"
+              initial={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                width: `${Math.random() * 300 + 100}px`,
+                height: `${Math.random() * 300 + 100}px`,
+                opacity: 0.2
+              }}
+              animate={{
+                x: [0, Math.random() * 100 - 50],
+                y: [0, Math.random() * 100 - 50],
+                rotate: [0, 360]
+              }}
+              transition={{
+                duration: Math.random() * 30 + 20,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "linear"
+              }}
+            />
+          ))}
+        </div>
+
+        <Navbar />
+        <div className='bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50'>
           <motion.div
-            initial={{ scale: 0.98, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative z-[10]"
           >
-            <Banner data={bannerData} />
+            <div className="container mx-auto py-8 ">
+              {/* Banner Component */}
+              <motion.div
+                initial={{ scale: 0.98, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <Banner data={bannerData} />
+              </motion.div>
+
+
+            </div>
           </motion.div>
-
-
         </div>
-      </motion.div>
-      </div>
 
-      {/* Create space equal to SignupHero's height so it reveals on scroll */}
-      <div className="h-[80vh] bg-black opacity-0" />
+        {/* Create space equal to SignupHero's height so it reveals on scroll */}
+        <SignupHero />
 
-
-      {/* CTA Section */}
-      <div className='bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50'>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        className=" text-center py-10 "
-      >
-        <h2 className="text-2xl font-bold text-amber-900">
-          Ready to take the next step?
-        </h2>
-        <div className="flex flex-wrap justify-center gap-4">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-all shadow-lg hover:shadow-xl"
+        {/* CTA Section */}
+        <div className='bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50'>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className=" text-center py-10 "
           >
-            Browse All Programs
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-white text-amber-800 border border-amber-300 rounded-lg hover:bg-amber-50 transition-all shadow hover:shadow-md"
-          >
-            Get Personalized Recommendations
-          </motion.button>
+            <h2 className="text-2xl font-bold text-amber-900">
+              Ready to take the next step?
+            </h2>
+            <div className="flex flex-wrap justify-center gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-all shadow-lg hover:shadow-xl"
+              >
+                Browse All Programs
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3 bg-white text-amber-800 border border-amber-300 rounded-lg hover:bg-amber-50 transition-all shadow hover:shadow-md"
+              >
+                Get Personalized Recommendations
+              </motion.button>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
+        <div className="bg-black opacity-0 h-[80vh] lg:h-[40vh]" />
       </div>
-      <Footer />
-    </div>
 
     </>
   );
