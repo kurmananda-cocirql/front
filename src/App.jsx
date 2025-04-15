@@ -26,7 +26,7 @@ const App = () => {
       <div className="fixed left-0 w-full h-auto z-[-10] bottom-0">
         <Footer />
       </div>
-      <div className="min-h-screen ">
+      <div className="min-h-screen bg-gradient-to-br from-amber-100 via-amber-100 to-amber-100 ">
         {/* Animated background elements */}
 
         <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -57,7 +57,7 @@ const App = () => {
         </div>
 
         <Navbar />
-        <div className='bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50'>
+        <div className=''>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -83,7 +83,7 @@ const App = () => {
         <SignupHero />
 
         {/* CTA Section */}
-        <div className='bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50'>
+        <div className='bg-white'>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -111,8 +111,8 @@ const App = () => {
             </div>
           </motion.div>
         </div>
-        <div className="bg-black opacity-0 h-[80vh] lg:h-[40vh]" />
       </div>
+      <div className="bg-black opacity-0 h-[80vh] lg:h-[40vh]" />
 
     </>
   );
