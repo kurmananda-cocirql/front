@@ -41,8 +41,9 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         {/* Top Bar */}
         <div className="flex justify-between items-center py-4">
-          {/* Left Side: Search bar */}
-          <div className="flex items-center space-x-4">
+          {/* Logo and Mobile Menu Button */}
+
+          <div className="flex items-center space-x-4 w-1/3">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -51,7 +52,7 @@ const Navbar = () => {
             >
               <FiSearch size={20} />
             </motion.button>
-            
+
             {/* Auth Button with Transition */}
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -65,15 +66,15 @@ const Navbar = () => {
               </span>
             </motion.button>
 
-            
             {/* Shopping Cart with Animation */}
-            <motion.button 
+
+            <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               className="relative p-2 text-amber-900 hover:text-amber-700"
             >
               <FiShoppingCart size={20} />
-              <motion.span 
+              <motion.span
                 className="absolute -top-1 -right-1 bg-gradient-to-br from-amber-600 to-amber-800 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center shadow-sm"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -82,11 +83,19 @@ const Navbar = () => {
                 3
               </motion.span>
             </motion.button>
+
             
           </div>
 
-          {/* Center: Logo (Centered exactly in the middle) */}
-          <div className="flex justify-center items-center absolute left-0 right-0">
+          <div className="flex items-center">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="md:hidden mr-4 text-amber-900"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </motion.button>
             <motion.a
               whileHover={{ scale: 1.05 }}
               className="text-2xl font-bold text-amber-900 flex items-center"
@@ -97,41 +106,40 @@ const Navbar = () => {
             </motion.a>
           </div>
 
-          {/* Right Side Icons */}
-          <div className="flex items-center w-1/3">
-            <motion.form 
-              onSubmit={handleSearch} 
-              className="relative w-full"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="relative">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search for courses, programs..."
-                  className="w-full px-4 py-2 pl-10 border-2 border-amber-300 rounded-full focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white/80 backdrop-blur-sm placeholder-amber-600/70 text-amber-900 shadow-sm"
-                />
-                <FiSearch className="absolute left-3 top-3 text-amber-600" />
-                <AnimatePresence>
-                  {searchQuery && (
-                    <motion.button
-                      type="button"
-                      onClick={() => setSearchQuery('')}
-                      className="absolute right-3 top-2.5 text-amber-600"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <FiX size={18} />
-                    </motion.button>
-                  )}
-                </AnimatePresence>
-              </div>
-            </motion.form>
-          </div>
+          {/* Desktop Search */}
+          <motion.form
+            onSubmit={handleSearch}
+            className="hidden md:block relative w-1/3"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="relative">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search for courses, programs..."
+                className="w-full px-4 py-2 pl-10 border-2 border-amber-300 rounded-full focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white/80 backdrop-blur-sm placeholder-amber-600/70 text-amber-900 shadow-sm"
+              />
+              <FiSearch className="absolute left-3 top-3 text-amber-600" />
+              <AnimatePresence>
+                {searchQuery && (
+                  <motion.button
+                    type="button"
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-3 top-2.5 text-amber-600"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <FiX size={18} />
+                  </motion.button>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.form>
+
         </div>
 
         {/* Mobile Search - Animated */}
@@ -186,16 +194,15 @@ const Navbar = () => {
               >
                 <a
                   href={item.path}
-                  className={`px-4 py-2 rounded-lg transition-all flex items-center ${
-                    activeNavItem === item.page
+                  className={`px-4 py-2 rounded-lg transition-all flex items-center ${activeNavItem === item.page
                       ? 'text-amber-900 font-semibold'
                       : 'text-amber-800 hover:text-amber-900'
-                  }`}
+                    }`}
                   onClick={() => setActiveNavItem(item.page)}
                 >
                   {item.page}
                 </a>
-                
+
                 {/* Hover indicator */}
                 {hoveredItem === item.page && (
                   <motion.div
@@ -209,7 +216,7 @@ const Navbar = () => {
               </motion.div>
             ))}
           </div>
-          
+
           <div className="flex flex-wrap gap-2 md:gap-4">
             {otherItems.map((item) => (
               <motion.a
