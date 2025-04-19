@@ -1,12 +1,33 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const SignupHero = () => {
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  // Background fade effect (0.3 to 0.7 visibility)
+  const bgOpacity = useTransform(scrollYProgress, [0.3, 0.7], [0, 1]);
+  
+  // Zoom effect (0 to 0.5 visibility, stopping at midpoint)
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.75, 1]);
+
   return (
-    <div className="h-[80vh] items-center justify-center flex ">
-      <div className='h-[60vh] w-[60vw] rounded-xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col'>
+    <div ref={ref} className="h-[80vh] items-center justify-center flex relative">
+      {/* White overlay that fades in */}
+      <motion.div 
+        className="absolute inset-0 bg-white z-0"
+        style={{ opacity: bgOpacity }}
+      />
+      
+      <motion.div 
+        className='h-[60vh] w-[60vw] rounded-xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative z-10 overflow-hidden'
+        style={{ scale }}
+      >
         {/* Animated background elements */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {[...Array(10)].map((_, i) => (
             <motion.div
               key={i}
@@ -33,7 +54,7 @@ const SignupHero = () => {
           ))}
         </div>
 
-        {/* Main content */}
+        {/* Main content - all content will zoom with the container */}
         <div className="relative z-10 flex-grow flex items-center justify-center px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -84,32 +105,7 @@ const SignupHero = () => {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Animated scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{
-              y: [0, 10, 0],
-              opacity: [0.6, 1, 0.6]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="text-amber-300"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </motion.div>
-        </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 };
