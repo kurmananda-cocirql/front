@@ -38,13 +38,13 @@ const TypeformHero = () => {
         </div>
 
         {/* Content Section */}
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:w-1/2 flex justify-center items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-3xl md:text-4xl font-bold text-amber-900 mb-4">
+            <h1 className="text-4xl md:text-4xl font-bold text-amber-900 mb-4">
               Skill Up With CoCirql
             </h1>
             

@@ -5,6 +5,7 @@ import Banner from './components/Banner';
 import SignupHero from './components/sign';
 import Footer from './components/Footer';
 import TypeformHero from './components/TypeformHero';
+import ChoiceQS from './components/choices';
 
 
 const App = () => {
@@ -84,6 +85,7 @@ const App = () => {
 
         <TypeformHero />
         <SignupHero />
+        <ChoiceQS />
 
         {/* CTA Section */}
         <div className='bg-white'>
