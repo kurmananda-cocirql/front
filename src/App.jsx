@@ -79,6 +79,10 @@ const App = () => {
           </motion.div>
         </div>
 
+        <h2 className="text-5xl font-bold text-amber-900 w-2/3 mx-auto py-16">
+              Some random text to occupy(Place holder) space and this is random thing, just for testing, I'll remove this later once the effect start working.
+            </h2>
+
         {/* Create space equal to SignupHero's height so it reveals on scroll */}
         <SignupHero />
 
