@@ -10,35 +10,35 @@ const Banner = () => {
   const bannerItems = [
     {
       id: 0,
-      image: "https://picsum.photos/seed/amber0/800/400?grayscale",
+      image: "https://picsum.photos/seed/amber0/1600/600?grayscale",
       title: "CIRCUS 70UR*25",
       description: "Experience the greatest show on earth",
       redirectUrl: "/events/event0"
     },
     {
       id: 1,
-      image: "https://picsum.photos/seed/amber1/800/400?grayscale",
+      image: "https://picsum.photos/seed/amber1/1600/600?grayscale",
       title: "MUSIC FESTIVAL",
       description: "Three days of non-stop performances",
       redirectUrl: "/events/event1"
     },
     {
       id: 2,
-      image: "https://picsum.photos/seed/amber2/800/400?grayscale",
+      image: "https://picsum.photos/seed/amber2/1600/600?grayscale",
       title: "FOOD EXPO",
       description: "Taste the world's finest cuisines",
       redirectUrl: "/events/event2"
     },
     {
       id: 3,
-      image: "https://picsum.photos/seed/amber3/800/400?grayscale",
+      image: "https://picsum.photos/seed/amber3/1600/600?grayscale",
       title: "ART EXHIBITION",
       description: "Contemporary artists showcase",
       redirectUrl: "/events/event3"
     },
     {
       id: 4,
-      image: "https://picsum.photos/seed/amber4/800/400?grayscale",
+      image: "https://picsum.photos/seed/amber4/1600/600?grayscale",
       title: "SPORTS CHAMPIONSHIP",
       description: "Witness record-breaking moments",
       redirectUrl: "/events/event4"
@@ -86,47 +86,43 @@ const Banner = () => {
   const extendedItems = [bannerItems[bannerItems.length - 1], ...bannerItems, bannerItems[0]];
 
   return (
-    <div className="relative w-full overflow-hidden rounded-xl bg-amber-50 h-[300px] lg:h-[300px]">
+    <div className="relative w-full overflow-hidden bg-amber-50 h-[400px] lg:h-[300px]">
       {/* Left Navigation Button */}
       <button 
         onClick={handlePrev}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-90 text-amber-800 p-3 rounded-lg hover:bg-opacity-100 transition-all shadow-lg border border-amber-200 flex items-center justify-center w-12 h-12"
+        className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-90 text-amber-800 p-3 rounded-lg hover:bg-opacity-100 transition-all shadow-lg border border-amber-200 flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12"
       >
         <FiChevronLeft size={24} className="font-bold" />
       </button>
 
-      {/* Banner Container with peek */}
-      <div className="relative h-full w-full max-w-6xl mx-0">
+      {/* Full Width Banner Container */}
+      <div className="relative h-full w-full">
         <div 
           className="flex h-full transition-transform duration-500 ease-out"
-          style={{ transform: `translateX(calc(-${currentIndex * 100}% + ${currentIndex * 40}px))` }}
+          style={{ transform: `translateX(calc(-${currentIndex * 100}%))` }}
         >
           {extendedItems.map((item, index) => (
             <div 
               key={`${item.id}-${index}`}
-              className="flex-shrink-0 h-full transition-all duration-300"
+              className="flex-shrink-0 w-full h-full transition-all duration-300"
               style={{ 
-                width: `calc(100% - 80px)`,
-                marginRight: '20px',
-                marginLeft: '20px',
                 opacity: index === currentIndex ? 1 : 0.7,
-                transform: index === currentIndex ? 'scale(1)' : 'scale(0.9)'
+                transform: index === currentIndex ? 'scale(1)' : 'scale(0.98)'
               }}
             >
               <div 
-                className="relative h-full rounded-xl overflow-hidden cursor-pointer shadow-xl"
+                className="relative h-full w-full overflow-hidden cursor-pointer"
                 onClick={() => handleBannerClick(item.redirectUrl)}
               >
                 <img 
                   src={item.image} 
                   alt="Banner"
-                  className="w-full h-3/4 object-cover"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-amber-800 p-4 text-white">
-                  <h3 className="text-xl lg:text-2xl font-bold">{item.title}</h3>
-                  <p className="text-sm lg:text-base">{item.description}</p>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 lg:p-10 text-white">
+                  <h3 className="text-2xl lg:text-4xl font-bold">{item.title}</h3>
+                  <p className="text-lg lg:text-xl mt-2">{item.description}</p>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-amber-900/20 to-transparent"></div>
               </div>
             </div>
           ))}
@@ -136,18 +132,18 @@ const Banner = () => {
       {/* Right Navigation Button */}
       <button 
         onClick={handleNext}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-90 text-amber-800 p-3 rounded-lg hover:bg-opacity-100 transition-all shadow-lg border border-amber-200 flex items-center justify-center w-12 h-12"
+        className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-90 text-amber-800 p-3 rounded-lg hover:bg-opacity-100 transition-all shadow-lg border border-amber-200 flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12"
       >
         <FiChevronRight size={24} className="font-bold" />
       </button>
 
       {/* Indicator dots */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
         {bannerItems.slice(1, -1).map((_, index) => (
           <button
             key={index}
             onClick={() => handleDotClick(index)}
-            className={`w-4 h-4 rounded-full transition-all ${currentIndex === index + 1 ? 'bg-amber-700' : 'bg-amber-300'}`}
+            className={`w-3 h-3 rounded-full transition-all ${currentIndex === index + 1 ? 'bg-amber-500' : 'bg-amber-300'}`}
           />
         ))}
       </div>

@@ -15,7 +15,7 @@ const TypeformHero = () => {
   };
 
   return (
-    <section className="w-full py-12 bg-gradient-to-br from-amber-100 via-amber-100 to-amber-100">
+    <section className="w-full py-12 ">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-8">
         {/* Video Container */}
         <div className="w-full lg:w-1/2 aspect-video relative">
