@@ -10,9 +10,9 @@ import ChoiceQS from './components/choices';
 const App = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-200 via-amber-200 to-amber-200">
-      <div className="fixed left-0 w-full h-auto z-[-10] bottom-0">
-        <Footer />
-      </div>
+      {/* <div className="left-0 w-full h-auto z-[10] bottom-0">
+        
+      </div> */}
 
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {[...Array(10)].map((_, i) => (
@@ -90,7 +90,7 @@ const App = () => {
         </motion.div>
       </div>
 
-      <div className="bg-black opacity-0 h-[80vh] lg:h-[40vh]" />
+      <div className="bg-white opacity-0 " /><Footer />
     </div>
   );
 };
