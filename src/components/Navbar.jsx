@@ -100,7 +100,6 @@ const Navbar = () => {
 
   return (
     <div className="w-full font-sans bg-white sticky top-0 z-50">
-      {/* Top navigation bar */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -122,14 +121,13 @@ const Navbar = () => {
         ))}
       </motion.div>
 
-      {/* Main navigation bar */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="flex justify-between items-center text-black px-8"
       >
-        {/* Left side - WORKSHOPS */}
+
         <motion.div 
           className="relative"
           onHoverStart={() => setHoveredItem(0)}
@@ -150,7 +148,6 @@ const Navbar = () => {
           />
         </motion.div>
 
-        {/* Center Logo */}
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -163,7 +160,6 @@ const Navbar = () => {
               transition={{ duration: 0.2 }}
               className="w-20 h-11 flex items-center justify-center"
             >
-              {/* Replace with your actual logo image */}
               <img 
                 src="logo.png" 
                 alt="Logo" 
@@ -173,7 +169,6 @@ const Navbar = () => {
           </a>
         </motion.div>
 
-        {/* Right side - EVENTS and Shopping Bag */}
         <div className="flex items-center space-x-4">
           <motion.div 
             className="relative space-x-3"
@@ -195,7 +190,6 @@ const Navbar = () => {
             />
           </motion.div>
           
-          {/* Shopping bag */}
           <motion.div 
             variants={itemVariants}
             whileHover={{ scale: 1.1 }} 

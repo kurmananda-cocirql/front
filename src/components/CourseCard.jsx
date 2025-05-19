@@ -14,7 +14,7 @@ const CourseCard = ({ course }) => {
       onClick={handleClick}
       className="bg-amber-100 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-amber-200 hover:border-amber-300 cursor-pointer flex flex-col h-full"
     >
-      {/* Image container with responsive height */}
+      
       <div className="w-full h-40 sm:h-48 md:h-56 lg:h-64 overflow-hidden">
         <img
           src={course.image}
@@ -24,19 +24,19 @@ const CourseCard = ({ course }) => {
         />
       </div>
 
-      {/* Content area */}
+
       <div className="p-3 flex flex-col flex-grow">
-        {/* Title - adjusts font size based on screen */}
+        
         <h3 className="font-bold text-base sm:text-lg text-amber-900 mb-1 line-clamp-2 sm:line-clamp-1">
           {course.title}
         </h3>
         
-        {/* Category - adjusts font size and line clamp */}
+        
         <p className="text-amber-700 text-xs sm:text-sm mb-2 line-clamp-2">
           {course.category}
         </p>
 
-        {/* Rating/Students - adjusts spacing and font sizes */}
+
         <div className="mt-auto">
           {course.rating ? (
             <div className="flex justify-between items-center space-x-2">

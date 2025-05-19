@@ -20,7 +20,7 @@ const Footer = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-amber-100">
         
-        {/* Branding / Description */}
+        
         <motion.div variants={fadeIn}>
           <motion.h3
             whileHover={{ scale: 1.03 }}
@@ -34,7 +34,7 @@ const Footer = () => {
           </p>
         </motion.div>
 
-        {/* Useful Links */}
+
         <motion.div variants={fadeIn}>
           <h4 className="text-lg font-semibold text-amber-100 mb-4">Useful Links</h4>
           <ul className="space-y-2 text-sm">
@@ -52,7 +52,7 @@ const Footer = () => {
           </ul>
         </motion.div>
 
-        {/* Social Media */}
+
         <motion.div variants={fadeIn}>
           <h4 className="text-lg font-semibold text-amber-100 mb-4">Connect With Us</h4>
           <div className="flex space-x-4">
@@ -71,7 +71,7 @@ const Footer = () => {
         </motion.div>
       </div>
 
-      {/* Copyright */}
+
       <motion.div
         variants={fadeIn}
         className="text-center py-4 border-t border-amber-200 text-xs text-amber-400"

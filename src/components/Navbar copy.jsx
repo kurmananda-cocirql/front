@@ -22,7 +22,7 @@ const Navbar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("Searching for:", searchQuery);
-    // Implement actual search functionality
+    
   };
 
   const handleSearchIconClick = () => {
@@ -39,9 +39,9 @@ const Navbar = () => {
   return (
     <nav className="bg-gradient-to-r from-amber-50 to-amber-100 shadow-lg z-[30] relative">
       <div className="container mx-auto px-4">
-        {/* Top Bar */}
+        
         <div className="flex justify-between items-center py-4">
-          {/* Logo and Mobile Menu Button */}
+          
 
           <div className="flex items-center space-x-4 w-1/3">
             <motion.button
@@ -53,7 +53,7 @@ const Navbar = () => {
               <FiSearch size={20} />
             </motion.button>
 
-            {/* Auth Button with Transition */}
+
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -66,7 +66,7 @@ const Navbar = () => {
               </span>
             </motion.button>
 
-            {/* Shopping Cart with Animation */}
+
 
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -142,7 +142,7 @@ const Navbar = () => {
 
         </div>
 
-        {/* Mobile Search - Animated */}
+
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.form
@@ -177,7 +177,7 @@ const Navbar = () => {
           )}
         </AnimatePresence>
 
-        {/* Main Navigation - Enhanced */}
+
         <motion.div
           className={`${mobileMenuOpen ? 'block' : 'hidden'} md:flex justify-between py-3 border-t border-amber-200/50`}
           initial={{ opacity: 0, y: -20 }}
@@ -203,7 +203,7 @@ const Navbar = () => {
                   {item.page}
                 </a>
 
-                {/* Hover indicator */}
+
                 {hoveredItem === item.page && (
                   <motion.div
                     className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-amber-500 to-amber-300 rounded-full"

@@ -7,7 +7,7 @@ const WorkshopsPage = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   
   const allCourses = [
-    // Development (7 courses)
+    
     {
       id: 1,
       title: "Introduction to Programming",
@@ -72,7 +72,7 @@ const WorkshopsPage = () => {
       redirectUrl: "/courses/devops"
     },
     
-    // Design (5 courses)
+    
     {
       id: 8,
       title: "UI/UX Design Principles",
@@ -119,7 +119,7 @@ const WorkshopsPage = () => {
       redirectUrl: "/courses/3d-modeling"
     },
     
-    // Data Science (5 courses)
+    
     {
       id: 13,
       title: "Data Science Fundamentals",
@@ -166,7 +166,7 @@ const WorkshopsPage = () => {
       redirectUrl: "/courses/big-data"
     },
     
-    // Business (3 courses)
+    
     {
       id: 18,
       title: "Digital Marketing 101",
@@ -203,7 +203,7 @@ const WorkshopsPage = () => {
     : allCourses.filter(course => course.category === activeFilter);
 
   const handleCourseClick = (url) => {
-    // Your navigation logic here
+    
     console.log("Navigating to:", url);
   };
 
@@ -212,7 +212,7 @@ const WorkshopsPage = () => {
       <SimpleNavbar />
       
       <div className="container mx-auto px-4 py-8">
-        {/* Hero Section */}
+        
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -227,7 +227,7 @@ const WorkshopsPage = () => {
           </p>
         </motion.div>
 
-        {/* Filter Bar */}
+
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -249,7 +249,7 @@ const WorkshopsPage = () => {
           ))}
         </motion.div>
 
-        {/* Filter Status */}
+
         {activeFilter !== 'All' && (
           <motion.div 
             initial={{ opacity: 0 }}
@@ -262,7 +262,7 @@ const WorkshopsPage = () => {
           </motion.div>
         )}
 
-        {/* Courses Grid - 3 per row */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.map((course, index) => (
             <motion.div
@@ -282,7 +282,7 @@ const WorkshopsPage = () => {
           ))}
         </div>
 
-        {/* Empty State */}
+
         {filteredCourses.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -301,7 +301,7 @@ const WorkshopsPage = () => {
           </motion.div>
         )}
 
-        {/* CTA Section */}
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

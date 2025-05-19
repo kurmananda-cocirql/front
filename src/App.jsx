@@ -10,12 +10,10 @@ import ChoiceQS from './components/choices';
 const App = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-200 via-amber-200 to-amber-200">
-      {/* Fixed Footer */}
       <div className="fixed left-0 w-full h-auto z-[-10] bottom-0">
         <Footer />
       </div>
 
-      {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {[...Array(10)].map((_, i) => (
           <motion.div
@@ -45,7 +43,7 @@ const App = () => {
 
       <Navbar />
 
-      {/* Full Width Banner Section */}
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -55,14 +53,14 @@ const App = () => {
         <Banner />
       </motion.div>
 
-      {/* Other Components */}
+
       <div className="container mx-auto px-4 py-12">
         <SignupHero />
         <TypeformHero />
         <ChoiceQS />
       </div>
 
-      {/* CTA Section */}
+
       <div className='bg-white'>
         <motion.div
           initial={{ opacity: 0 }}

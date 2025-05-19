@@ -53,7 +53,7 @@ const ChoiceQS = () => {
     } else {
       setIsComplete(true);
       console.log("All answers:", newAnswers);
-      // Here you would typically send to your backend
+      
     }
   };
 
@@ -129,7 +129,7 @@ const ChoiceQS = () => {
           ))}
         </div>
 
-        {/* Enhanced Progress Indicator */}
+
         <div className="mt-12 flex flex-col items-center">
           <div className="flex justify-center items-center gap-4 mb-2">
             {questions.map((_, index) => (

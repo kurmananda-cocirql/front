@@ -8,7 +8,7 @@ const TypeformHero = () => {
     { name: "WORKSHOP", date: "03 April" }
   ];
 
-  // Handle right-click prevention
+  
   const preventRightClick = (e) => {
     e.preventDefault();
     return false;
@@ -17,15 +17,15 @@ const TypeformHero = () => {
   return (
     <section className="w-full py-12 ">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-8">
-        {/* Video Container */}
+        
         <div className="w-full lg:w-1/2 aspect-video relative">
-          {/* Overlay to catch right-clicks */}
+        
           <div 
             className="absolute inset-0 z-10"
             onContextMenu={preventRightClick}
           />
           
-          {/* YouTube iframe with all controls disabled */}
+          
           <iframe
             src="https://www.youtube.com/embed/TRxf5hLZih4?autoplay=1&mute=1&loop=1&playlist=TRxf5hLZih4&controls=0&modestbranding=1&disablekb=1&fs=0"
             className="w-full h-full rounded-xl shadow-lg pointer-events-none"
@@ -36,8 +36,7 @@ const TypeformHero = () => {
             sandbox="allow-same-origin allow-scripts"
           />
         </div>
-
-        {/* Content Section */}
+        
         <div className="w-full lg:w-1/2 flex justify-center items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

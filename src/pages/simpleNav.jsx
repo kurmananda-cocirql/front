@@ -18,7 +18,7 @@ const SimpleNavbar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("Searching workshops for:", searchQuery);
-    // Implement actual search functionality here
+    
   };
 
   const handleSearchIconClick = () => {
@@ -32,9 +32,9 @@ const SimpleNavbar = () => {
     <nav className="bg-gradient-to-r from-amber-50 to-amber-100 shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          {/* Left side - Logo and Navigation */}
+          
           <div className="flex items-center space-x-6">
-            {/* Mobile Menu Button */}
+            
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -44,7 +44,7 @@ const SimpleNavbar = () => {
               {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </motion.button>
 
-            {/* Logo with animation */}
+
             <motion.a
               whileHover={{ scale: 1.05 }}
               className="text-2xl font-bold text-amber-900 flex items-center"
@@ -54,7 +54,7 @@ const SimpleNavbar = () => {
               <span className="italic font-serif font-extrabold tracking-tight">cirql</span>
             </motion.a>
 
-            {/* Desktop Navigation */}
+
             <div className="hidden md:flex space-x-1">
               {navItems.map((item) => (
                 <motion.div
@@ -83,9 +83,9 @@ const SimpleNavbar = () => {
             </div>
           </div>
 
-          {/* Right side - Search only */}
+
           <div className="flex items-center">
-            {/* Desktop Search */}
+            
             <motion.form 
               onSubmit={handleSearch} 
               className="hidden md:block"
@@ -119,7 +119,7 @@ const SimpleNavbar = () => {
               </div>
             </motion.form>
 
-            {/* Mobile Search Icon */}
+
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -131,7 +131,7 @@ const SimpleNavbar = () => {
           </div>
         </div>
 
-        {/* Mobile Search and Navigation */}
+
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
@@ -141,7 +141,7 @@ const SimpleNavbar = () => {
               transition={{ duration: 0.2 }}
               className="md:hidden overflow-hidden"
             >
-              {/* Mobile Search */}
+              
               <form onSubmit={handleSearch} className="mb-4">
                 <div className="relative">
                   <input
@@ -165,7 +165,7 @@ const SimpleNavbar = () => {
                 </div>
               </form>
 
-              {/* Mobile Navigation */}
+
               <div className="flex flex-col space-y-2 pb-4">
                 {navItems.map((item) => (
                   <motion.a

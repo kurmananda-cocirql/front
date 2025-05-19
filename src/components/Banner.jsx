@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const Banner = () => {
-  const [currentIndex, setCurrentIndex] = useState(1); // Start at 1 for peek effect
+  const [currentIndex, setCurrentIndex] = useState(1); 
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const intervalRef = useRef(null);
 
@@ -45,7 +45,6 @@ const Banner = () => {
     }
   ];
 
-  // Auto-scroll every 3 seconds
   useEffect(() => {
     if (isAutoScrolling) {
       intervalRef.current = setInterval(() => {
@@ -82,12 +81,10 @@ const Banner = () => {
     window.location.href = url;
   };
 
-  // Create extended array for peek effect
   const extendedItems = [bannerItems[bannerItems.length - 1], ...bannerItems, bannerItems[0]];
 
   return (
     <div className="relative w-full overflow-hidden bg-amber-50 h-[400px] lg:h-[300px]">
-      {/* Left Navigation Button */}
       <button 
         onClick={handlePrev}
         className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-90 text-amber-800 p-3 rounded-lg hover:bg-opacity-100 transition-all shadow-lg border border-amber-200 flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12"
@@ -95,7 +92,6 @@ const Banner = () => {
         <FiChevronLeft size={24} className="font-bold" />
       </button>
 
-      {/* Full Width Banner Container */}
       <div className="relative h-full w-full">
         <div 
           className="flex h-full transition-transform duration-500 ease-out"
@@ -129,7 +125,7 @@ const Banner = () => {
         </div>
       </div>
 
-      {/* Right Navigation Button */}
+
       <button 
         onClick={handleNext}
         className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-90 text-amber-800 p-3 rounded-lg hover:bg-opacity-100 transition-all shadow-lg border border-amber-200 flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12"
@@ -137,7 +133,7 @@ const Banner = () => {
         <FiChevronRight size={24} className="font-bold" />
       </button>
 
-      {/* Indicator dots */}
+
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
         {bannerItems.slice(1, -1).map((_, index) => (
           <button
