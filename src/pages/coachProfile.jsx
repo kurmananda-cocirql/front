@@ -1,5 +1,6 @@
 "use client"
 
+import Navbar from "../components/Navbar"
 import { useState } from "react"
 import { motion } from "framer-motion"
 
@@ -36,6 +37,8 @@ const CoachProfile = () => {
   ]
 
   return (
+    <>
+    <Navbar />
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-amber-50 to-slate-100">
       {/* Subtle Background Pattern */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-30">
@@ -306,6 +309,7 @@ const CoachProfile = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
