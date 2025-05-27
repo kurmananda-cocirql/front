@@ -60,10 +60,11 @@ const ShoppingBagIcon = () => (
 
 const Navbar = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
-  const [searchFocused, setSearchFocused] = useState(false);
 
-  const navItems = ["New & Featured", "Men", "Women", "Kids", "Sale", "SNKRS"];
-  const rightNavItems = ["Enquire", "Help", "Buddy", "Sign In"];
+  const rightNavItems = [{ name: "Enquire", link: '' },
+  { name: "Help", link: '' },
+  { name: "Buddy", link: '' },
+  { name: "Sign In", link: 'auth' }];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -110,12 +111,12 @@ const Navbar = () => {
           <div key={item} className="flex text-black items-center">
             {index > 0 && <span className="mx-2">|</span>}
             <motion.a
-              href="#"
+              href={item.link}
               className="text-black hover:text-gray-600 mx-2"
               variants={itemVariants}
               whileHover="hover"
             >
-              {item}
+              {item.name}
             </motion.a>
           </div>
         ))}
@@ -128,7 +129,7 @@ const Navbar = () => {
         className="flex justify-between items-center text-black px-8"
       >
 
-        <motion.div 
+        <motion.div
           className="relative"
           onHoverStart={() => setHoveredItem(0)}
           onHoverEnd={() => setHoveredItem(null)}
@@ -155,14 +156,14 @@ const Navbar = () => {
           className="mx-8"
         >
           <a href="/">
-            <motion.div 
-              whileHover={{ scale: 1.05 }} 
+            <motion.div
+              whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
               className="w-20 h-11 flex items-center justify-center"
             >
-              <img 
-                src="logo.png" 
-                alt="Logo" 
+              <img
+                src="logo.png"
+                alt="Logo"
                 className="h-full object-contain"
               />
             </motion.div>
@@ -170,7 +171,7 @@ const Navbar = () => {
         </motion.div>
 
         <div className="flex items-center space-x-4">
-          <motion.div 
+          <motion.div
             className="relative space-x-3"
             onHoverStart={() => setHoveredItem(1)}
             onHoverEnd={() => setHoveredItem(null)}
@@ -189,10 +190,10 @@ const Navbar = () => {
               className="absolute bottom-0 left-0 h-0.5 bg-black origin-left"
             />
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             variants={itemVariants}
-            whileHover={{ scale: 1.1 }} 
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
             <ShoppingBagIcon />

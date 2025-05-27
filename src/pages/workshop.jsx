@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SimpleNavbar from './simpleNav';
 import CourseCard from '../components/CourseCard';
 import { motion } from 'framer-motion';
+import Navbar from '../components/Navbar';
 
 const WorkshopsPage = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -209,7 +210,7 @@ const WorkshopsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50 to-amber-100">
-      <SimpleNavbar />
+      <Navbar />
       
       <div className="container mx-auto px-4 py-8">
         

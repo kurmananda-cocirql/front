@@ -4,6 +4,8 @@ import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import WorkshopsPage from './pages/workshop.jsx'
+import CoachProfile from './pages/coachProfile.jsx'
+import AuthApp from './pages/auth.jsx'
 
 const router = createBrowserRouter([
   {
@@ -13,6 +15,14 @@ const router = createBrowserRouter([
   {
     path: '/workshops',
     element: <WorkshopsPage />,
+  },
+  {
+    path: '/coachprof',
+    element: <CoachProfile />,
+  },
+  {
+    path: '/auth',
+    element: <AuthApp />,
   },
 ]);
 

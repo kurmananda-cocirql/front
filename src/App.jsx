@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import TypeformHero from './components/TypeformHero';
 import ChoiceQS from './components/choices';
 
+
 const App = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-200 via-amber-200 to-amber-200">
