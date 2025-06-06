@@ -100,12 +100,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full font-sans bg-white sticky top-0 z-50">
+    <div className="w-full font-sans sticky top-0 z-50">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex justify-end items-center bg-[#fff5b7] py-2 px-8 text-xs"
+        className="flex justify-end items-center bg-[#D3D3D3] py-2 px-8 text-xs"
       >
         {rightNavItems.map((item, index) => (
           <div key={item} className="flex text-black items-center">
@@ -126,7 +126,7 @@ const Navbar = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex justify-between items-center text-black px-8"
+        className="flex justify-between bg-[#FECE18] mx-4 my-2 items-center text-black rounded-lg px-8"
       >
 
         <motion.div

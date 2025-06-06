@@ -3,7 +3,7 @@ import React from 'react';
 
 function HeroSection() {
   return (
-    <div className="bg-gradient-to-r from-[#66520b] to-[#cca416] text-white py-20 rounded-3xl">
+    <div className="bg-[#FFF2B4] text-white py-20 rounded-3xl">
       <div className="container mx-auto text-center">
         <h1 className="text-5xl font-bold pb-16 mb-4">Build a Circle outside your <br/> <span className='text-[#191406]'>Circle</span>.</h1><div className="flex justify-center space-x-4">
           <button className="bg-white text-[#66520b] font-bold py-2 px-6 rounded-full hover:bg-yellow-200 transition duration-300">

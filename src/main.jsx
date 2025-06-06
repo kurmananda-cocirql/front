@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import WorkshopsPage from './pages/workshop.jsx'
 import CoachProfile from './pages/coachProfile.jsx'
 import AuthApp from './pages/auth.jsx'
+import WorkshopDetail from './pages/workshopDetail.jsx'
+import ShoppingCart from './pages/shoppingCart.jsx'
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,14 @@ const router = createBrowserRouter([
   {
     path: '/workshops',
     element: <WorkshopsPage />,
+  },
+  {
+    path: '/workshopDetail',
+    element: <WorkshopDetail />,
+  },
+  {
+    path: '/shopcart',
+    element: <ShoppingCart />,
   },
   {
     path: '/coachprof',

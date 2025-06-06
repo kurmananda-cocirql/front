@@ -10,7 +10,7 @@ import ChoiceQS from './components/choices';
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-200 via-amber-200 to-amber-200">
+    <div className="min-h-screen bg-[#FFF8B4]">
       {/* <div className="left-0 w-full h-auto z-[10] bottom-0">
         
       </div> */}
