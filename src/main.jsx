@@ -8,6 +8,8 @@ import CoachProfile from './pages/coachProfile.jsx'
 import AuthApp from './pages/auth.jsx'
 import WorkshopDetail from './pages/workshopDetail.jsx'
 import ShoppingCart from './pages/shoppingCart.jsx'
+import UserProfileEdit from './pages/profileEdit.jsx'
+import UserProfile from './pages/userprofile.jsx'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
   {
     path: '/shopcart',
     element: <ShoppingCart />,
+  },
+  {
+    path: '/userprofile',
+    element: <UserProfile />,
+  },
+  {
+    path: '/userprofileedit',
+    element: <UserProfileEdit />,
   },
   {
     path: '/coachprof',
