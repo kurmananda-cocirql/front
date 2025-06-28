@@ -6,10 +6,9 @@ import { motion } from "framer-motion"
 const Navbar = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
 
-  const rightNavItems = [{ name: "Enquire", link: '' },
+  const rightNavItems = [{ name: "Join US", link: '' },
   { name: "Help", link: '' },
-  { name: "Buddy", link: '' },
-  { name: "Sign In", link: 'auth' }];
+  { name: "Profile", link: 'auth' }];
 
   const containerVariants = {
     hidden: { opacity: 0 },
