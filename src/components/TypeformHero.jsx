@@ -15,7 +15,7 @@ const TypeformHero = () => {
   };
 
   return (
-    <section className="w-full py-12 ">
+    <section className="w-full py-12">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-8">
         
         <div className="w-full lg:w-1/2 aspect-video relative">
@@ -44,25 +44,13 @@ const TypeformHero = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl md:text-4xl font-bold text-amber-900 mb-4">
-              Skill Up With CoCirql
+              How to use
             </h1>
             
             <p className="text-amber-800 mb-4">
-              Join our professional programs:
+              have to work on it
             </p>
 
-            <ul className="space-y-2 mb-6">
-              {programs.map((program, i) => (
-                <li key={i} className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-amber-600"></div>
-                  <span className="text-amber-900">{program.name} - {program.date}</span>
-                </li>
-              ))}
-            </ul>
-
-            <button className="px-6 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors">
-              Explore Programs
-            </button>
           </motion.div>
         </div>
       </div>

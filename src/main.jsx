@@ -10,6 +10,7 @@ import WorkshopDetail from './pages/workshopDetail.jsx'
 import ShoppingCart from './pages/shoppingCart.jsx'
 import UserProfileEdit from './pages/profileEdit.jsx'
 import UserProfile from './pages/userprofile.jsx'
+import Navbar from './components/Navbar';
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,13 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <RouterProvider router={router}/>
-  </StrictMode>,
-)
+  <div className="min-h-screen bg-white">
+    <Navbar />
+    <div className='top-[10vh]'>
+      <StrictMode>
+        <RouterProvider router={router} />
+      </StrictMode>
+    </div>
+  </div>
+
+);

@@ -1,97 +1,47 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import Navbar from './components/Navbar';
-import Banner from './components/Banner';
+import React, { useEffect, useState } from 'react';
+import ImageSlider from './components/ImgSlider';
 import SignupHero from './components/sign';
-import Footer from './components/Footer';
 import TypeformHero from './components/TypeformHero';
-import ChoiceQS from './components/choices';
-
+import Footer from './components/Footer';
 
 const App = () => {
-  return (
-    <div className="min-h-screen bg-[#FFF8B4]">
-      {/* <div className="left-0 w-full h-auto z-[10] bottom-0">
-        
-      </div> */}
+  const [scrollY, setScrollY] = useState(0);
 
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {[...Array(10)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-amber-200/20"
-            initial={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 300 + 100}px`,
-              height: `${Math.random() * 300 + 100}px`,
-              opacity: 0.2
-            }}
-            animate={{
-              x: [0, Math.random() * 100 - 50],
-              y: [0, Math.random() * 100 - 50],
-              rotate: [0, 360]
-            }}
-            transition={{
-              duration: Math.random() * 30 + 20,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "linear"
-            }}
-          />
-        ))}
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Compute fade and blur
+  const opacity = 1 - Math.min(scrollY / 500, 1); // fades out over 500px
+  const blur = Math.min(scrollY / 100, 10); // max blur of 10px
+
+  return (
+    <div className="relative">
+      {/* Fixed Image Slider with scroll-based fading */}
+      <div
+        className="fixed w-full h-screen z-0 transition-all duration-300 ease-out"
+        style={{
+          opacity: opacity,
+          filter: `blur(${blur}px)`,
+          transition: 'opacity 0.2s ease-out, filter 0.2s ease-out',
+        }}
+      >
+        <ImageSlider />
       </div>
 
-      <Navbar />
+      {/* Spacer to reveal next section */}
+      <div className="h-[70vh]" />
 
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-[10]"
-      >
-        <Banner />
-      </motion.div>
-
-
-      <div className="container mx-auto px-4 py-12">
+      {/* Main content over it */}
+      <div className="relative z-10 pt-screen bg-white">
         <SignupHero />
         <TypeformHero />
-        <ChoiceQS />
+        <Footer />
       </div>
-
-
-      <div className='bg-white'>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="container mx-auto text-center py-16 px-4"
-        >
-          <h2 className="text-3xl font-bold text-amber-900 mb-8">
-            Ready to take the next step?
-          </h2>
-          <div className="flex flex-wrap justify-center gap-6">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-all shadow-lg hover:shadow-xl text-lg"
-            >
-              Browse All Programs
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-white text-amber-800 border border-amber-300 rounded-lg hover:bg-amber-50 transition-all shadow hover:shadow-md text-lg"
-            >
-              Get Personalized Recommendations
-            </motion.button>
-          </div>
-        </motion.div>
-      </div>
-
-      <div className="bg-white opacity-0 " /><Footer />
     </div>
   );
 };

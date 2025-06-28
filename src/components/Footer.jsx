@@ -16,27 +16,25 @@ const Footer = () => {
       whileInView="visible"
       viewport={{ once: true }}
       transition={{ staggerChildren: 0.15 }}
-      className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-t border-amber-200 shadow-inner h-[80vh] lg:h-[40vh]"
+      // Changed to yellow theme (you can revert to original if needed)
+      className="bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500 border-t border-yellow-600 shadow-inner"
     >
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-amber-100">
-        
+      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-black">
         
         <motion.div variants={fadeIn}>
-          <motion.h3
+          <motion.div
             whileHover={{ scale: 1.03 }}
-            className="text-2xl font-bold text-amber-100 mb-3 flex items-center"
+            className="text-2xl font-bold text-black mb-3 flex items-center"
           >
-            <span className="bg-gradient-to-br from-amber-600 to-amber-800 text-white px-2 py-1 rounded-lg mr-1 shadow">co</span>
-            <span className="italic font-serif font-extrabold tracking-tight text-amber-300">cirql</span>
-          </motion.h3>
-          <p className="text-sm text-amber-300 leading-relaxed">
+            <img src="/logo.png" alt="Logo" className=" h-10 mr-2 rounded shadow" />
+          </motion.div>
+          <p className="text-sm text-black leading-relaxed">
             Elevating learning experiences with programs designed for personal and professional growth. Join the community of curious minds.
           </p>
         </motion.div>
 
-
         <motion.div variants={fadeIn}>
-          <h4 className="text-lg font-semibold text-amber-100 mb-4">Useful Links</h4>
+          <h4 className="text-lg font-semibold text-black mb-4">Useful Links</h4>
           <ul className="space-y-2 text-sm">
             {['Privacy Policy', 'Terms & Conditions', 'FAQs', 'Help & Support'].map((item, i) => (
               <motion.li
@@ -44,7 +42,7 @@ const Footer = () => {
                 whileHover={linkHover}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <a href="#" className="hover:text-amber-500 transition-all">
+                <a href="#" className="hover:text-white transition-all">
                   {item}
                 </a>
               </motion.li>
@@ -52,9 +50,8 @@ const Footer = () => {
           </ul>
         </motion.div>
 
-
         <motion.div variants={fadeIn}>
-          <h4 className="text-lg font-semibold text-amber-100 mb-4">Connect With Us</h4>
+          <h4 className="text-lg font-semibold text-black mb-4">Connect With Us</h4>
           <div className="flex space-x-4">
             {[FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn].map((Icon, i) => (
               <motion.a
@@ -62,7 +59,7 @@ const Footer = () => {
                 href="#"
                 whileHover={iconHover}
                 transition={{ type: 'spring', stiffness: 400 }}
-                className="text-amber-300 hover:text-amber-500 transition"
+                className="text-black hover:text-white transition"
               >
                 <Icon size={20} />
               </motion.a>
@@ -71,10 +68,9 @@ const Footer = () => {
         </motion.div>
       </div>
 
-
       <motion.div
         variants={fadeIn}
-        className="text-center py-4 border-t border-amber-200 text-xs text-amber-400"
+        className="text-center py-4 border-t border-yellow-600 text-xs text-black"
       >
         © {new Date().getFullYear()} Cocirql. All rights reserved.
       </motion.div>
