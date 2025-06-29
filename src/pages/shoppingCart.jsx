@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Navbar from "../components/Navbar"
 
 
 // Star icon component
@@ -93,7 +92,6 @@ const ShoppingCart = () => {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <Navbar />
 
             {/* Main Content */}
             <div className="max-w-7xl mx-auto px-4 py-8">
