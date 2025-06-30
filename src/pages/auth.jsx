@@ -20,25 +20,6 @@ export default function AuthApp() {
         <div className="w-full max-w-md space-y-6">
           <h2 className="text-3xl font-semibold text-gray-800">Create Account</h2>
 
-          <div className="flex justify-between gap-4">
-            <Button
-              variant="outlined"
-              startIcon={<GoogleIcon />}
-              fullWidth
-            >
-              Continue with Google
-            </Button>
-            <Button
-              variant="outlined"
-              startIcon={<FacebookIcon />}
-              fullWidth
-            >
-              Continue with Facebook
-            </Button>
-          </div>
-
-          <Divider className="text-gray-500">- OR -</Divider>
-
           <form className="space-y-4">
             <TextField
               label="Full Name"
