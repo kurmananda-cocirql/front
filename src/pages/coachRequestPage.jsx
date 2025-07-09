@@ -18,7 +18,7 @@ import {
   Container,
   Stack,
 } from "@mui/material"
-import { CloudUpload, Delete, VideoLibrary, Image, Person, Work, Event, CloudUploadOutlined } from "@mui/icons-material"
+import { CloudUpload, Delete, VideoLibrary, Image, Person, Work, Event, CloudUploadOutlined, Group } from "@mui/icons-material"
 
 // Define mandatory fields
 const MANDATORY_FIELDS = [
@@ -73,6 +73,9 @@ export default function RequestWorkshopForm({ onBack }) {
     availabilityDate: "",
     availabilityTime: "",
     totalSessions: "",
+    targetAudience: "",
+    prerequisites: "",
+    requiredMaterials: "",
   })
 
   const [errors, setErrors] = useState({})
@@ -332,8 +335,8 @@ export default function RequestWorkshopForm({ onBack }) {
 
             <Box sx={{ p: 5 }}>
               <Grid container spacing={4} className="w-full justify-center">
-                <Grid item xs={12}  className="w-1/3 justify-center">
-                  <TextField 
+                <Grid item xs={12} className="w-1/3 justify-center">
+                  <TextField
                     fullWidth
                     label="Professional Background & Expertise *"
                     multiline
@@ -352,7 +355,7 @@ export default function RequestWorkshopForm({ onBack }) {
                   />
                 </Grid>
 
-                <Grid item xs={12}  className="w-1/3 justify-center">
+                <Grid item xs={12} className="w-1/3 justify-center">
                   <TextField
                     fullWidth
                     label="Previous Teaching Experience"
@@ -361,6 +364,95 @@ export default function RequestWorkshopForm({ onBack }) {
                     value={formData.previousExperience}
                     onChange={(e) => handleInputChange("previousExperience", e.target.value)}
                     placeholder="Share any previous teaching, training, or workshop experience (optional)..."
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: 3,
+                        "&:hover fieldset": { borderColor: "#FFD54F" },
+                        "&.Mui-focused fieldset": { borderColor: "#FFD54F", borderWidth: 2 },
+                      },
+                      "& .MuiInputLabel-root.Mui-focused": { color: "#FFD54F" },
+                    }}
+                  />
+                </Grid>
+              </Grid>
+            </Box>
+          </Card>
+
+          {/* Section 2.5: Participant Essentials */}
+          <Card
+            sx={{
+              boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+              borderRadius: 4,
+              overflow: "hidden",
+              border: "1px solid #F0F0F0",
+              mt: 5,
+            }}
+          >
+            <Box sx={{ bgcolor: "#000000", p: 4 }}>
+              <Stack direction="row" alignItems="center" spacing={2}>
+                <Group sx={{ fontSize: 32, color: "#FFD54F" }} />
+                <Box>
+                  <Typography variant="h5" sx={{ fontWeight: "700", color: "#FFFFFF", mb: 0.5 }}>
+                    Participant Essentials
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: "#CCCCCC" }}>
+                    Help participants understand if the workshop is right for them and how to prepare
+                  </Typography>
+                </Box>
+              </Stack>
+            </Box>
+
+            <Box sx={{ p: 5 }}>
+              <Grid container spacing={4} className="w-full justify-center">
+                <Grid item xs={12} className="w-1/3 justify-center">
+                  <TextField
+                    fullWidth
+                    label="Target Audience"
+                    value={formData.targetAudience}
+                    onChange={(e) => handleInputChange("targetAudience", e.target.value)}
+                    placeholder="Who is this workshop intended for? "
+                    multiline
+                    rows={4}
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: 3,
+                        "&:hover fieldset": { borderColor: "#FFD54F" },
+                        "&.Mui-focused fieldset": { borderColor: "#FFD54F", borderWidth: 2 },
+                      },
+                      "& .MuiInputLabel-root.Mui-focused": { color: "#FFD54F" },
+                    }}
+                  />
+                </Grid>
+
+                <Grid item xs={12} className="w-1/3 justify-center">
+                  <TextField
+                    fullWidth
+                    label="Prerequisites"
+                    value={formData.prerequisites}
+                    onChange={(e) => handleInputChange("prerequisites", e.target.value)}
+                    placeholder="Are there any prior skills or knowledge needed? (optional)"
+                    multiline
+                    rows={4}
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: 3,
+                        "&:hover fieldset": { borderColor: "#FFD54F" },
+                        "&.Mui-focused fieldset": { borderColor: "#FFD54F", borderWidth: 2 },
+                      },
+                      "& .MuiInputLabel-root.Mui-focused": { color: "#FFD54F" },
+                    }}
+                  />
+                </Grid>
+
+                <Grid item xs={12} className="w-4/5 justify-center">
+                  <TextField
+                    fullWidth
+                    label="Required Materials"
+                    value={formData.requiredMaterials}
+                    onChange={(e) => handleInputChange("requiredMaterials", e.target.value)}
+                    placeholder="Mention any tools, devices, or resources participants need to bring"
+                    multiline
+                    rows={3}
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         borderRadius: 3,
@@ -398,9 +490,9 @@ export default function RequestWorkshopForm({ onBack }) {
               </Stack>
             </Box>
 
-            <Box sx={{ p: 5 }}  className="w-full justify-center">
+            <Box sx={{ p: 5 }} className="w-full justify-center">
               <Grid container spacing={4} className="w-full justify-center">
-                <Grid item xs={12} md={6}  className="w-1/2 justify-center">
+                <Grid item xs={12} md={6} className="w-1/2 justify-center">
                   <TextField
                     fullWidth
                     label="Workshop Title/Topic *"
@@ -418,7 +510,7 @@ export default function RequestWorkshopForm({ onBack }) {
                   />
                 </Grid>
 
-                <Grid item xs={12} md={6}  className="w-1/3 justify-center">
+                <Grid item xs={12} md={6} className="w-1/3 justify-center">
                   <FormControl fullWidth>
                     <InputLabel>Workshop Category *</InputLabel>
                     <Select
@@ -440,7 +532,7 @@ export default function RequestWorkshopForm({ onBack }) {
                   </FormControl>
                 </Grid>
 
-                <Grid item xs={12} md={4}  className="w-1/4 justify-center">
+                <Grid item xs={12} md={4} className="w-1/4 justify-center">
                   <TextField
                     fullWidth
                     type="date"
@@ -459,7 +551,7 @@ export default function RequestWorkshopForm({ onBack }) {
                   />
                 </Grid>
 
-                <Grid item xs={12} md={4}  className="w-1/5 justify-center">
+                <Grid item xs={12} md={4} className="w-1/5 justify-center">
                   <TextField
                     fullWidth
                     type="time"
@@ -496,8 +588,8 @@ export default function RequestWorkshopForm({ onBack }) {
                     }}
                   />
                 </Grid>
-                
-                <Grid item xs={12}  className="w-3/4 justify-center">
+
+                <Grid item xs={12} className="w-3/4 justify-center">
                   <TextField
                     fullWidth
                     label="Workshop Description *"
@@ -529,7 +621,7 @@ export default function RequestWorkshopForm({ onBack }) {
               overflow: "hidden",
               border: "1px solid #F0F0F0",
             }}
-             className="w-full justify-center"
+            className="w-full justify-center"
           >
             <Box sx={{ bgcolor: "#000000", p: 4 }} >
               <Stack direction="row" alignItems="center" spacing={2}>
@@ -546,7 +638,7 @@ export default function RequestWorkshopForm({ onBack }) {
             </Box>
 
             <Box sx={{ p: 5 }}>
-              <Grid container spacing={4}  className="w-full justify-center">
+              <Grid container spacing={4} className="w-full justify-center">
                 {/* Video Upload */}
                 <Grid item xs={12} md={6} className="w-2/5 justify-center">
                   <Typography variant="h6" sx={{ fontWeight: "600", color: "#000000", mb: 3 }} className="text-center">
