@@ -244,7 +244,7 @@ export default function Dashboard() {
             <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 4 }}>
               <Box>
                 <Typography className="font-bold text-black" variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>
-                  Hi Aditi 👋
+                  Hi Aditi  <span className="text-4xl wave">👋</span>
                 </Typography>
                 <Typography variant="h6" sx={{ color: "#666" }}>
                   Welcome to <span style={{ color: "#FFD54F", fontWeight: "bold" }}>CoCirql</span> !

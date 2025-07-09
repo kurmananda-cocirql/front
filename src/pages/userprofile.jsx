@@ -25,7 +25,6 @@ const UserProfile = () => {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <Navbar />
 
             <div className="flex mt-4 mx-0 gap-0 lg:mx-[10vw]">
                 {/* Left Sidebar */}
