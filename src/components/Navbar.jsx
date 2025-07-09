@@ -44,7 +44,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full font-sans bg-[#FECE18] sticky justify-between top-0 z-50">
+    <div className="w-full font-sans bg-[#FECE18] sticky justify-between top-0 z-50 h-[8vh]">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}

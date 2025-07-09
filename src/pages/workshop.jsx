@@ -1,5 +1,5 @@
 "use client"
-
+import React, { useEffect } from "react"
 import { useState } from "react"
 import { Search, Clock, Calendar, User, Users } from "lucide-react"
 import { motion } from "framer-motion"
@@ -8,96 +8,14 @@ import { Button, Checkbox, FormControlLabel } from "@mui/material"
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("")
 
-  const workshops = [
-    {
-      lessons: 16,
-      title: "Breathe & Release: A Journey Into Restorative Yoga",
-      category: "Yoga",
-      price: "₹3,109",
-      rating: 4.8,
-      date: "25 June 2025",
-      time: "7:00 AM",
-      participants: "1,564",
-      instructor: "Aditi Sharma",
-      description:
-        "Join us for a rejuvenating yoga workshop designed to help you reconnect with your body, mind, and breath.",
-      linked: "/workshopDetail",
-      image: "https://picsum.photos/",
-    },
-    {
-      lessons: 12,
-      title: "Mindful Meditation: Finding Inner Peace",
-      category: "Meditation",
-      price: "₹2,499",
-      rating: 4.7,
-      date: "28 June 2025",
-      time: "6:00 AM",
-      participants: "892",
-      instructor: "Rahul Mehta",
-      description:
-        "Discover the power of mindfulness and learn techniques to achieve mental clarity and emotional balance.",
-      linked: "/workshopDetail",
-      image: "https://picsum.photos/",
-    },
-    {
-      lessons: 8,
-      title: "Creative Art Therapy: Express Your Soul",
-      category: "Art",
-      price: "₹1,899",
-      rating: 4.9,
-      date: "30 June 2025",
-      time: "4:00 PM",
-      participants: "456",
-      instructor: "Priya Singh",
-      description:
-        "Unleash your creativity through therapeutic art practices. Perfect for beginners and experienced artists alike.",
-      linked: "/workshopDetail",
-      image: "https://picsum.photos/",
-    },
-    {
-      lessons: 10,
-      title: "Advanced Yoga Flow: Strength & Flexibility",
-      category: "Yoga",
-      price: "₹3,599",
-      rating: 4.8,
-      date: "2 July 2025",
-      time: "7:30 AM",
-      participants: "723",
-      instructor: "Vikram Joshi",
-      description: "Take your yoga practice to the next level with advanced poses and flowing sequences.",
-      linked: "/workshopDetail",
-      image: "https://picsum.photos/",
-    },
-    {
-      lessons: 6,
-      title: "Zen Meditation: Path to Enlightenment",
-      category: "Meditation",
-      price: "₹2,199",
-      rating: 4.6,
-      date: "5 July 2025",
-      time: "5:30 AM",
-      participants: "634",
-      instructor: "Sunita Patel",
-      description: "Explore traditional Zen meditation techniques and find your path to inner peace and clarity.",
-      linked: "/workshopDetail",
-      image: "https://picsum.photos/",
-    },
-    {
-      lessons: 14,
-      title: "Abstract Art Workshop: Colors & Emotions",
-      category: "Art",
-      price: "₹2,799",
-      rating: 4.8,
-      date: "8 July 2025",
-      time: "2:00 PM",
-      participants: "389",
-      instructor: "Arjun Kumar",
-      description:
-        "Express your emotions through abstract art and discover the therapeutic power of creative expression.",
-      linked: "/workshopDetail",
-      image: "https://picsum.photos/",
-    },
-  ]
+  const [workshops, setWorkshops] = useState([]);
+
+  useEffect(() => {
+    fetch("/workshops_data.json")
+      .then((res) => res.json())
+      .then((data) => setWorkshops(data))
+      .catch((err) => console.error("Failed to load workshops:", err));
+  }, []);
 
   const categories = ["Yoga", "Meditation", "Art", "Fitness", "Cooking", "Photography", "Music", "Dance", "Writing", "Technology", "Business", "Personal Development", "Health & Wellness", "Travel", "Language Learning", "Gardening", "Crafts", "Fashion", "Beauty", "Sports", "Finance", "Marketing", "Leadership", "Public Speaking", "Social Media", "Graphic Design", "Web Development", "Data Science", "AI & Machine Learning", "Blockchain", "Cybersecurity", "Cloud Computing", "Mobile App Development", "Game Development", "Virtual Reality", "Augmented Reality", "Robotics", "Internet of Things (IoT)", "Quantum Computing", "Sustainability", "Environmental Science", "Astronomy", "History", "Philosophy", "Psychology", "Sociology", "Anthropology", "Political Science", "Economics"]
   const [selectedCategories, setSelectedCategories] = useState(["Yoga"])
@@ -176,10 +94,10 @@ const App = () => {
             transition={{ delay: 0.2 }}
             className="w-64 flex-shrink-0 "
           >
-            <div className="bg-white rounded-lg p-6 shadow-sm top-[20vh] fixed">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Categories</h3>
+            <div className="bg-white rounded-lg p-6 shadow-sm top-[10vh] sticky h-[85vh]">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">CATEGORIES</h3>
               <hr style={{ borderColor: "black", height: '2px', backgroundColor: "black" }} />
-              <div className="flex flex-col mt-2 overflow-y-auto max-h-[70vh]">
+              <div className="flex flex-col mt-2 overflow-y-auto max-h-[75vh]">
                 {categories.map((category) => (
                   <FormControlLabel
                     key={category}

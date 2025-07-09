@@ -1,316 +1,483 @@
 "use client"
 
-import Navbar from "../components/Navbar"
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import {
+  Box,
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Avatar,
+  Grid,
+  Paper,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material"
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts"
 
-const CoachProfile = () => {
-  const [activeTab, setActiveTab] = useState("about")
+// Initial data
+const initialMonthlyData = [
+  { month: "JAN", participants: 450 },
+  { month: "FEB", participants: 780 },
+  { month: "MAR", participants: 620 },
+  { month: "APR", participants: 590 },
+  { month: "MAY", participants: 520 },
+  { month: "JUN", participants: 850 },
+  { month: "JUL", participants: 920 },
+  { month: "AUG", participants: 480 },
+  { month: "SEP", participants: 780 },
+  { month: "OCT", participants: 680 },
+  { month: "NOV", participants: 950 },
+  { month: "DEC", participants: 1020 },
+]
 
-  const stats = [
-    { icon: "★", label: "Rating", value: "4.9", color: "text-amber-600" },
-    { icon: "👤", label: "Connections", value: "2.4K", color: "text-amber-700" },
-    { icon: "📊", label: "Projects", value: "47", color: "text-amber-800" },
-    { icon: "⏱", label: "Experience", value: "5+ Years", color: "text-amber-600" },
-  ]
+const initialWorkshopData = [
+  { name: "Workshop 1", percentage: 50, color: "#7C4DFF" },
+  { name: "Workshop 2", percentage: 30, color: "#9C27B0" },
+  { name: "Workshop 3", percentage: 20, color: "#E1BEE7" },
+]
 
-  const skills = [
-    "React",
-    "TypeScript",
-    "Node.js",
-    "Python",
-    "AWS",
-    "Docker",
-    "GraphQL",
-    "MongoDB",
-    "PostgreSQL",
-    "Next.js",
-    "Tailwind CSS",
-    "System Design",
-  ]
+export default function Dashboard() {
+  const [monthlyData, setMonthlyData] = useState(initialMonthlyData)
+  const [workshopData, setWorkshopData] = useState(initialWorkshopData)
+  const [workshopsData, setWorkshopsData] = useState([
+    {
+      id: 1,
+      title: "Basics of Graphic Design",
+      date: "2025-04-22",
+      participants: 35,
+      rating: 4.2,
+      earning: 17500,
+      status: "Completed",
+    },
+    {
+      id: 2,
+      title: "Basics of Graphic Design",
+      date: "2025-04-22",
+      participants: 35,
+      rating: 4.2,
+      earning: null,
+      status: "On-going",
+    },
+    {
+      id: 3,
+      title: "Basics of Graphic Design",
+      date: "2025-04-22",
+      participants: 35,
+      rating: 4.2,
+      earning: 0,
+      status: "Cancelled",
+    },
+    {
+      id: 4,
+      title: "Basics of Graphic Design",
+      date: "2025-04-22",
+      participants: 35,
+      rating: 4.2,
+      earning: 17500,
+      status: "Completed",
+    },
+    {
+      id: 5,
+      title: "Basics of Graphic Design",
+      date: "2025-04-22",
+      participants: 35,
+      rating: 4.2,
+      earning: null,
+      status: "On-going",
+    },
+    {
+      id: 6,
+      title: "Basics of Graphic Design",
+      date: "2025-04-22",
+      participants: 35,
+      rating: 4.2,
+      earning: 0,
+      status: "Cancelled",
+    },
+  ])
+  const [activeMenuItem, setActiveMenuItem] = useState("Dashboard")
+  const [avatarSrc, setAvatarSrc] = useState("/avatar-placeholder.png")
 
-  const recentActivity = [
-    { action: "Completed project", item: "E-commerce Dashboard", time: "2 hours ago" },
-    { action: "Updated profile", item: "Added new certifications", time: "1 day ago" },
-    { action: "Joined team", item: "Frontend Architecture", time: "3 days ago" },
-    { action: "Published article", item: "React Performance Optimization", time: "1 week ago" },
-  ]
+  // Calculate totals from data
+  const totalWorkshops = 25
+  const totalParticipants = monthlyData.reduce((sum, item) => sum + item.participants, 0)
+  const averageRating = 4.6
+
+  // Simulate real-time updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMonthlyData((prev) =>
+        prev.map((item) => ({
+          ...item,
+          participants: Math.max(200, item.participants + Math.floor(Math.random() * 100 - 50)),
+        })),
+      )
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files?.[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        setAvatarSrc(e.target?.result)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "Completed":
+        return "#4CAF50"
+      case "On-going":
+        return "#FF9800"
+      case "Cancelled":
+        return "#F44336"
+      default:
+        return "#666"
+    }
+  }
+
+  const formatEarning = (earning) => {
+    if (earning === null) return "-"
+    if (earning === 0) return "0"
+    return earning.toLocaleString()
+  }
+
+  const menuItems = ["Dashboard", "Workshop", "Transactions"]
 
   return (
-    <>
-    <Navbar />
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-amber-50 to-slate-100">
-      {/* Subtle Background Pattern */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-30">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-gradient-to-r from-amber-200/10 to-slate-200/10"
-            initial={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 200 + 150}px`,
-              height: `${Math.random() * 200 + 150}px`,
-              opacity: 0.1,
-            }}
-            animate={{
-              x: [0, Math.random() * 50 - 25],
-              y: [0, Math.random() * 50 - 25],
-              rotate: [0, 180],
-            }}
-            transition={{
-              duration: Math.random() * 40 + 30,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-              ease: "linear",
-            }}
+    <Box sx={{ display: "flex", minHeight: "92vh", bgcolor: "#f5f5f5" }}>
+      {/* Left Sidebar */}
+      <Paper
+        sx={{
+          width: 280,
+          bgcolor: "#FFD54F",
+          borderRadius: 3,
+          m: 2,
+          p: 3,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {/* Profile Section */}
+        <Box sx={{ textAlign: "center", mb: 4 }}>
+          <input
+            accept="image/*"
+            style={{ display: "none" }}
+            id="avatar-upload"
+            type="file"
+            onChange={handleImageUpload}
           />
-        ))}
-      </div>
+          <label htmlFor="avatar-upload">
+            <Avatar
+              src={avatarSrc}
+              sx={{
+                width: 120,
+                height: 120,
+                mx: "auto",
+                mb: 2,
+                cursor: "pointer",
+                "&:hover": { opacity: 0.8 },
+              }}
+            />
+          </label>
+          <Typography variant="h5" sx={{ fontWeight: "bold", color: "#333", mb: 1 }}>
+            Aditi
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "#666",
+              cursor: "pointer",
+              "&:hover": { textDecoration: "underline" },
+            }}
+          >
+            Edit Your Profile
+          </Typography>
+        </Box>
+
+        <Divider sx={{ bgcolor: "#333", mb: 3 }} />
+
+        {/* Navigation Menu */}
+        <Box sx={{ flexGrow: 1 }}>
+          {menuItems.map((item) => (
+            <Button
+              key={item}
+              fullWidth
+              variant={activeMenuItem === item ? "contained" : "text"}
+              sx={{
+                mb: 1,
+                py: 1.5,
+                justifyContent: "flex-start",
+                bgcolor: activeMenuItem === item ? "#7C4DFF" : "transparent",
+                color: activeMenuItem === item ? "white" : "#333",
+                borderRadius: 2,
+                "&:hover": {
+                  bgcolor: activeMenuItem === item ? "#7C4DFF" : "rgba(0,0,0,0.1)",
+                },
+              }}
+              onClick={() => setActiveMenuItem(item)}
+            >
+              {item}
+            </Button>
+          ))}
+        </Box>
+      </Paper>
 
       {/* Main Content */}
-      <div className="relative z-10">
-        {/* Profile Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="container mx-auto px-4 pt-12"
-        >
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-8">
-            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
-              {/* Profile Image */}
-              <motion.div whileHover={{ scale: 1.02 }} className="relative">
-                <div className="w-28 h-28 rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-                  <img
-                    src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=128&h=128&fit=crop&crop=face"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white"></div>
-              </motion.div>
-
-              {/* Profile Info */}
-              <div className="flex-1 text-center lg:text-left">
-                <h1 className="text-2xl font-semibold text-gray-900 mb-1">Sarah Johnson</h1>
-                <p className="text-lg text-amber-700 font-medium mb-3">Senior Full Stack Developer</p>
-                <p className="text-gray-600 mb-6 max-w-2xl leading-relaxed">
-                  Experienced software engineer specializing in scalable web applications and modern JavaScript
-                  frameworks. Passionate about clean code, system architecture, and delivering exceptional user
-                  experiences.
-                </p>
-
-                {/* Contact Info */}
-                <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-gray-600 mb-6">
-                  <div className="flex items-center gap-2">
-                    <span className="text-gray-400">📍</span>
-                    <span>San Francisco, CA</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-gray-400">📧</span>
-                    <span>sarah.johnson@email.com</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-gray-400">🔗</span>
-                    <span>linkedin.com/in/sarahjohnson</span>
-                  </div>
-                </div>
-
-                {/* Social Links */}
-                <div className="flex justify-center lg:justify-start gap-3">
-                  {[
-                    { icon: "GitHub", href: "#" },
-                    { icon: "LinkedIn", href: "#" },
-                    { icon: "Portfolio", href: "#" },
-                    { icon: "Resume", href: "#" },
-                  ].map((social, index) => (
-                    <motion.a
-                      key={index}
-                      href={social.href}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 transition-colors"
-                    >
-                      {social.icon}
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col gap-3">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-6 py-2.5 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-all shadow-sm font-medium"
-                >
-                  Connect
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-6 py-2.5 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all shadow-sm font-medium"
-                >
-                  Message
-                </motion.button>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="container mx-auto px-4 mb-8"
-        >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-lg p-6 text-center shadow-sm border border-gray-100"
+      <Box sx={{ flexGrow: 1, p: 3 }}>
+        {activeMenuItem === "Dashboard" ? (
+          <>
+            {/* Header */}
+            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 4 }}>
+              <Box>
+                <Typography className="font-bold text-black" variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>
+                  Hi Aditi 👋
+                </Typography>
+                <Typography variant="h6" sx={{ color: "#666" }}>
+                  Welcome to <span style={{ color: "#FFD54F", fontWeight: "bold" }}>CoCirql</span> !
+                </Typography>
+              </Box>
+              <Button
+                variant="contained"
+                sx={{
+                  bgcolor: "#7C4DFF",
+                  borderRadius: 3,
+                  px: 4,
+                  py: 1.5,
+                  textTransform: "none",
+                  fontSize: "16px",
+                }}
               >
-                <div className="text-xl text-gray-600 mb-2">{stat.icon}</div>
-                <div className="text-xl font-semibold text-gray-900 mb-1">{stat.value}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                Request a new workshop
+              </Button>
+            </Box>
 
-        {/* Tabs Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="container mx-auto px-4 mb-8"
-        >
-          <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-1">
-            <div className="flex gap-1">
-              {["about", "skills", "activity"].map((tab) => (
-                <motion.button
-                  key={tab}
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.99 }}
-                  onClick={() => setActiveTab(tab)}
-                  className={`flex-1 px-6 py-3 rounded-md font-medium transition-all text-sm ${
-                    activeTab === tab
-                      ? "bg-amber-600 text-white shadow-sm"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                  }`}
-                >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                </motion.button>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+            {/* Stats Cards */}
+            <Grid  className="justify-center w-full" container spacing={3} sx={{ mb: 4 }}>
+              <Grid item xs={12} md={4}>
+                <Card sx={{ borderRadius: 3, p: 2 }}>
+                  <CardContent>
+                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                      Total Workshops
+                    </Typography>
+                    <Typography variant="h3" sx={{ color: "#7C4DFF", fontWeight: "bold" }}>
+                      {totalWorkshops}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Card sx={{ borderRadius: 3, p: 2 }}>
+                  <CardContent>
+                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                      Total Participants
+                    </Typography>
+                    <Typography variant="h3" sx={{ color: "#7C4DFF", fontWeight: "bold" }}>
+                      {totalParticipants}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Card sx={{ borderRadius: 3, p: 2 }}>
+                  <CardContent>
+                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                      Average Rating
+                    </Typography>
+                    <Typography variant="h3" sx={{ color: "#7C4DFF", fontWeight: "bold" }}>
+                      {averageRating}/5
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
 
-        {/* Tab Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="container mx-auto px-4 mb-12"
-        >
-          <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-8">
-            {activeTab === "about" && (
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-6">Professional Summary</h3>
-                <div className="text-gray-700 space-y-4 leading-relaxed">
-                  <p>
-                    Senior Full Stack Developer with over 5 years of experience designing and implementing scalable web
-                    applications. Proven track record of leading development teams and delivering high-quality software
-                    solutions that drive business growth.
-                  </p>
-                  <p>
-                    Expertise in modern JavaScript frameworks, cloud architecture, and agile development methodologies.
-                    Strong background in both frontend and backend technologies, with a focus on performance
-                    optimization and user experience.
-                  </p>
-                  <p>
-                    Committed to continuous learning and staying current with industry best practices. Experience
-                    mentoring junior developers and contributing to open-source projects.
-                  </p>
-                </div>
-              </div>
-            )}
+            {/* Charts Section */}
+            <Grid container spacing={3} className="justify-center">
+              {/* Bar Chart */}
+              <Grid item xs={12} md={9} className="w-3/5">
+                <Card sx={{ borderRadius: 3, p: 3, height: 400 }}>
+                  <Typography variant="h6" sx={{ mb: 2, color: "#666", fontSize: "12px", fontWeight: "bold" }}>
+                    PARTICIPANTS PER MONTH
+                  </Typography>
+                  <Typography variant="body2" sx={{ mb: 3, color: "#999", fontSize: "10px" }}>
+                    ■ NUMBER OF PARTICIPANTS
+                  </Typography>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <BarChart data={monthlyData}>
+                      <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: "#999" }} />
+                      <YAxis
+                        axisLine={false}
+                        tickLine={false}
+                        tick={{ fontSize: 10, fill: "#999" }}
+                        domain={[0, 1200]}
+                        ticks={[200, 400, 600, 800, 1000]}
+                      />
+                      <Bar dataKey="participants" fill="#7C4DFF" radius={[4, 4, 0, 0]} barSize={40} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </Card>
+              </Grid>
 
-            {activeTab === "skills" && (
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-6">Technical Skills</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                  {skills.map((skill, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ scale: 1.02 }}
-                      className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors text-center"
-                    >
-                      {skill}
-                    </motion.div>
+              {/* Pie Chart */}
+              <Grid item xs={12} md={3} className="w-1/5">
+                <Card sx={{ borderRadius: 3, p: 3, height: 400 }}>
+                  <Typography variant="h6" sx={{ mb: 3, textAlign: "center" }}>
+                    Participants
+                  </Typography>
+
+                  {/* Circular Progress Visualization */}
+                  <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
+                    <Box sx={{ position: "relative", width: 120, height: 120 }}>
+                      <Box
+                        sx={{
+                          width: 120,
+                          height: 120,
+                          borderRadius: "50%",
+                          background: `conic-gradient(
+                            #7C4DFF 0deg ${workshopData[0].percentage * 3.6}deg,
+                            #9C27B0 ${workshopData[0].percentage * 3.6}deg ${(workshopData[0].percentage + workshopData[1].percentage) * 3.6}deg,
+                            #E1BEE7 ${(workshopData[0].percentage + workshopData[1].percentage) * 3.6}deg ${(workshopData[0].percentage + workshopData[1].percentage + workshopData[2].percentage) * 3.6}deg,
+                            #f0f0f0 ${(workshopData[0].percentage + workshopData[1].percentage + workshopData[2].percentage) * 3.6}deg 360deg
+                          )`,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            width: 80,
+                            height: 80,
+                            borderRadius: "50%",
+                            bgcolor: "white",
+                          }}
+                        />
+                      </Box>
+                    </Box>
+                  </Box>
+
+                  {/* Workshop List */}
+                  <List sx={{ p: 0 }}>
+                    {workshopData.map((workshop, index) => (
+                      <ListItem key={index} sx={{ px: 0, py: 1 }}>
+                        <Box
+                          sx={{
+                            width: 12,
+                            height: 12,
+                            bgcolor: workshop.color,
+                            borderRadius: 1,
+                            mr: 2,
+                          }}
+                        />
+                        <ListItemText
+                          primary={
+                            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                              <Typography variant="body2" sx={{ color: "#666" }}>
+                                {workshop.name}
+                              </Typography>
+                              <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+                                {workshop.percentage}%
+                              </Typography>
+                            </Box>
+                          }
+                        />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Card>
+              </Grid>
+            </Grid>
+          </>
+        ) : activeMenuItem === "Workshop" ? (
+          <>
+            {/* Workshops Header */}
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h4" sx={{ fontWeight: "bold", color: "#333" }}>
+                Workshops
+              </Typography>
+            </Box>
+
+            {/* Workshops Table */}
+            <Card sx={{ borderRadius: 3, overflow: "hidden" }}>
+              <Table>
+                <TableHead>
+                  <TableRow sx={{ bgcolor: "#f8f9fa" }}>
+                    <TableCell sx={{ fontWeight: "bold", color: "#333", py: 2 }}>Workshop Title</TableCell>
+                    <TableCell sx={{ fontWeight: "bold", color: "#333", py: 2 }}>Date</TableCell>
+                    <TableCell sx={{ fontWeight: "bold", color: "#333", py: 2 }}>Participants</TableCell>
+                    <TableCell sx={{ fontWeight: "bold", color: "#333", py: 2 }}>Average Rating</TableCell>
+                    <TableCell sx={{ fontWeight: "bold", color: "#333", py: 2 }}>Earning</TableCell>
+                    <TableCell sx={{ fontWeight: "bold", color: "#333", py: 2 }}>Status</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {workshopsData.map((workshop) => (
+                    <TableRow key={workshop.id} sx={{ "&:hover": { bgcolor: "#f8f9fa" } }}>
+                      <TableCell sx={{ py: 2 }}>
+                        <Typography variant="body2" sx={{ color: "#333" }}>
+                          {workshop.title}
+                        </Typography>
+                      </TableCell>
+                      <TableCell sx={{ py: 2 }}>
+                        <Typography variant="body2" sx={{ color: "#666" }}>
+                          {workshop.date}
+                        </Typography>
+                      </TableCell>
+                      <TableCell sx={{ py: 2 }}>
+                        <Typography variant="body2" sx={{ color: "#666" }}>
+                          {workshop.participants}
+                        </Typography>
+                      </TableCell>
+                      <TableCell sx={{ py: 2 }}>
+                        <Typography variant="body2" sx={{ color: "#666" }}>
+                          {workshop.rating}
+                        </Typography>
+                      </TableCell>
+                      <TableCell sx={{ py: 2 }}>
+                        <Typography variant="body2" sx={{ color: "#666" }}>
+                          {formatEarning(workshop.earning)}
+                        </Typography>
+                      </TableCell>
+                      <TableCell sx={{ py: 2 }}>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: getStatusColor(workshop.status),
+                            fontWeight: "bold",
+                          }}
+                        >
+                          {workshop.status}
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
                   ))}
-                </div>
-              </div>
-            )}
-
-            {activeTab === "activity" && (
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-6">Recent Activity</h3>
-                <div className="space-y-4">
-                  {recentActivity.map((activity, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ scale: 1.01 }}
-                      className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-100"
-                    >
-                      <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-gray-900 font-medium">{activity.item}</div>
-                        <div className="text-sm text-gray-600 mt-1">{activity.action}</div>
-                      </div>
-                      <span className="text-xs text-gray-500 flex-shrink-0">{activity.time}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        </motion.div>
-
-        {/* Call to Action */}
-        <div className="bg-white border-t border-gray-100">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="container mx-auto text-center py-12 px-4"
-          >
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Ready to collaborate?</h2>
-            <div className="flex flex-wrap justify-center gap-4">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-all shadow-sm font-medium"
-              >
-                View Portfolio
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-3 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all shadow-sm font-medium"
-              >
-                Download CV
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </div>
-    </>
+                </TableBody>
+              </Table>
+            </Card>
+          </>
+        ) : (
+          <Box sx={{ p: 4, textAlign: "center" }}>
+            <Typography variant="h5" sx={{ color: "#666" }}>
+              {activeMenuItem} page coming soon...
+            </Typography>
+          </Box>
+        )}
+      </Box>
+    </Box>
   )
 }
 
-export default CoachProfile
