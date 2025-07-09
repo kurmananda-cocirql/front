@@ -12,6 +12,7 @@ import UserProfileEdit from './pages/profileEdit.jsx'
 import UserProfile from './pages/userprofile.jsx'
 import Navbar from './components/Navbar';
 import RequestWorkshopForm from './pages/coachRequestPage.jsx'
+import RequestWorkshopFormAdmin from './pages/adminRequestPage.jsx'
 import AdminApprovalPage from './pages/admin.jsx'
 
 const router = createBrowserRouter([
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: '/reqByCoach',
     element: <RequestWorkshopForm />,
+  },
+  {
+    path: '/reqByAdmin',
+    element: <RequestWorkshopFormAdmin />,
   },
   {
     path: '/admin',
