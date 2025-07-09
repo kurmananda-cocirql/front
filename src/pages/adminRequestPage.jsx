@@ -256,8 +256,8 @@ export default function RequestWorkshopFormAdmin({ onBack }) {
                         </Box>
 
                         <Box sx={{ p: 5 }}>
-                            <Grid container spacing={4}>
-                                <Grid item xs={12}>
+                            <Grid container spacing={4} className="w-full justify-center">
+                                <Grid item xs={12} className="w-2/3 justify-center">
                                     <TextField
                                         fullWidth
                                         label="Coach ID"
