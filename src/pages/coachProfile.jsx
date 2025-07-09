@@ -260,6 +260,7 @@ export default function Dashboard() {
                   textTransform: "none",
                   fontSize: "16px",
                 }}
+                href="/reqByCoach"
               >
                 Request a new workshop
               </Button>

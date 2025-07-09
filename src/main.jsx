@@ -11,6 +11,7 @@ import ShoppingCart from './pages/shoppingCart.jsx'
 import UserProfileEdit from './pages/profileEdit.jsx'
 import UserProfile from './pages/userprofile.jsx'
 import Navbar from './components/Navbar';
+import RequestWorkshopForm from './pages/coachRequestPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: '/auth',
     element: <AuthApp />,
+  },
+  {
+    path: '/reqByCoach',
+    element: <RequestWorkshopForm />,
   },
 ]);
 
