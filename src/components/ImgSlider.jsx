@@ -29,7 +29,7 @@ const ImageSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex(([prev]) => [prev + 1, 1]);
-    }, 5000); // 5000 ms = 5 sec
+    }, 4000); // 4000 ms = 4 sec
 
     return () => clearInterval(interval); // cleanup on unmount
   }, []);
