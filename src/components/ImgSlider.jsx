@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Box } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -25,6 +25,14 @@ const ImageSlider = () => {
   const swipeThreshold = 100;
   const pointerStartX = useRef(null);
   const imageIndex = wrapIndex(index, slides.length);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex(([prev]) => [prev + 1, 1]);
+    }, 5000); // 5000 ms = 5 sec
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, []);
 
   const handlePointerDown = (e) => {
     pointerStartX.current = e.clientX;
