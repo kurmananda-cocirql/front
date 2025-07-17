@@ -14,11 +14,10 @@ export default function AuthApp() {
   const [isSignup, setIsSignup] = useState(false)
 
   return (
-    <Box className="flex  bg-gray-50 font-sans ">
+    <Box className="flex bg-gray-50 font-sans h-[100vh] bottom-0 fixed w-full items-bottom justify-bottom">
       {/* Left Panel */}
       <Box
-        className="w-2/5 bg-yellow-400 px-10 py-14 flex flex-col items-center justify-between relative"
-        sx={{ minHeight: 'calc(100vh - 8vh)' }}
+        className="w-2/5 bg-[#FECE18] px-10 py-14 flex flex-col items-center justify-between relative"
       >
         <Box className="flex flex-col items-center my-auto">
           <Typography variant="h3" className="text-black font-extrabold text-center mb-4">
@@ -37,11 +36,12 @@ export default function AuthApp() {
       </Box>
 
       {/* Right Panel */}
-      <Box className="w-3/5 flex items-center justify-center px-10 py-16 bg-white">
+      <Box className={`w-3/5 flex ${isSignup ? "items-top" : "items-center"} justify-center px-10 py-5  bg-white overflow-y-auto`}>
         <Box sx={{ p: 6, width: '100%', maxWidth: 550 }}>
-          <Stack spacing={3}>
+          <h1 className="text-4xl">.</h1>
+          <Stack spacing={1}>
             <Box textAlign="center">
-              <Typography variant="h4" fontWeight="bold" color="text.primary">
+              <Typography variant="h5" fontWeight="bold" color="text.primary">
                 {isSignup ? "Create Account" : "Sign In"}
               </Typography>
               <Typography variant="body2" color="text.secondary">
@@ -51,10 +51,11 @@ export default function AuthApp() {
               </Typography>
             </Box>
 
-            <Stack spacing={2}>
+            <Stack spacing={2} className="text-sm">
               {isSignup ? (
                 <>
-                  <Stack direction="row" spacing={2}>
+
+                  <Stack direction="row" spacing={1}>
                     <TextField label="First Name" fullWidth />
                     <TextField label="Last Name" fullWidth />
                   </Stack>
@@ -104,6 +105,7 @@ export default function AuthApp() {
               )}
             </Typography>
           </Stack>
+          <h1 className="text-4xl">.</h1>
         </Box>
       </Box>
     </Box>

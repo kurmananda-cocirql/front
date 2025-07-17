@@ -464,24 +464,24 @@ export default function AdminApprovalPage({ onBack }) {
       {/* Header */}
       <div className="justify-between flex items-center">
         <Box sx={{ mb: 4 }}>
-          <Typography variant="h3" sx={{ fontWeight: "800", color: "#000000", mb: 2 }}>
+          <Typography variant="h4" sx={{ fontWeight: "600", color: "#000000", mb: 0 }}>
             Admin Approval Dashboard
           </Typography>
-          <Typography variant="h6" sx={{ color: "#666666" }}>
+          <Typography variant="h7" sx={{ color: "#666666" }}>
             Promote users to coaches and approve workshop requests
           </Typography>
         </Box>
         <Button
           variant="contained"
           sx={{
-            bgcolor: "#000000",
+            bgcolor: "#635be8",
             borderRadius: 3,
             px: 4,
             py: 1.5,
             textTransform: "none",
             fontSize: "16px",
           }}
-          href="/reqByAdmin"
+          href="/admin-form"
         >
           Request a new workshop
         </Button>
@@ -489,27 +489,26 @@ export default function AdminApprovalPage({ onBack }) {
 
       {/* Main Card with Tabs */}
       <Card sx={{ borderRadius: 4, boxShadow: "0 8px 32px rgba(0,0,0,0.12)", overflow: "hidden" }}>
-        {/* Tab Header */}
-        <Box sx={{ bgcolor: "#000000" }}>
+        <Box sx={{ bgcolor: "#FECE18" }}>
           <Tabs
             value={activeTab}
             onChange={handleTabChange}
             sx={{
               "& .MuiTab-root": {
-                color: "#CCCCCC",
+                color: "#000000",
                 fontWeight: "600",
                 fontSize: "16px",
                 textTransform: "none",
                 minHeight: 64,
                 "&.Mui-selected": {
-                  color: "#FFD54F",
+                  color: "#000000",
                 },
                 "& .MuiSvgIcon-root": {
-                  color: "#FFD54F",
+                  color: "#000000",
                 },
               },
               "& .MuiTabs-indicator": {
-                backgroundColor: "#FFD54F",
+                backgroundColor: "#000000",
                 height: 3,
               },
             }}
@@ -576,11 +575,11 @@ export default function AdminApprovalPage({ onBack }) {
                         {user.firstName.charAt(0)}
                         {user.lastName.charAt(0)}
                       </Avatar>
-                      <Box sx={{ flexGrow: 1 }}>
+                      <Box sx={{ flexGrow: 1 }} className='flex flex-row justify-between'>
                         <Typography variant="h6" sx={{ fontWeight: "600", color: "#000000" }}>
                           {user.firstName} {user.lastName}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: "#666666" }}>
+                        <Typography variant="h7" sx={{ color: "#666666" }}>
                           {user.expertise} • {user.experience} experience
                         </Typography>
                       </Box>

@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     element: <WorkshopsPage />,
   },
   {
-    path: '/workshopDetail',
+    path: '/workshop-details',
     element: <WorkshopDetail />,
   },
   {
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
     element: <UserProfileEdit />,
   },
   {
-    path: '/coachprof',
+    path: '/coach-panel',
     element: <CoachProfile />,
   },
   {
@@ -49,15 +49,15 @@ const router = createBrowserRouter([
     element: <AuthApp />,
   },
   {
-    path: '/reqByCoach',
+    path: '/coach-form',
     element: <RequestWorkshopForm />,
   },
   {
-    path: '/reqByAdmin',
+    path: '/admin-form',
     element: <RequestWorkshopFormAdmin />,
   },
   {
-    path: '/admin',
+    path: '/admin-panel',
     element: <AdminApprovalPage />,
   },
 ]);

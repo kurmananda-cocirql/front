@@ -17,7 +17,7 @@ const Footer = () => {
       viewport={{ once: true }}
       transition={{ staggerChildren: 0.15 }}
       // Changed to yellow theme (you can revert to original if needed)
-      className="bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500 border-t border-yellow-600 shadow-inner"
+      className="bg-[#FECE18] border-t shadow-inner"
     >
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-black">
         

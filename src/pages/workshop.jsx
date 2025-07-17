@@ -35,7 +35,7 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 mt-2">
       <div className="mx-auto px-4 ">
         {/* Hero Section */}
         <motion.div
@@ -45,10 +45,10 @@ const App = () => {
           className="text-center mb-4 max-w-7xl py-2  mx-auto justify-between flex flex-col md:flex-row gap-2 h-[10vh]"
         >
           <div className="flex flex-col">
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-gray-900 text-left mb-2">
               Discover Your Next <span className="text-yellow-400">Adventure</span>
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-md text-gray-600 max-w-2xl mx-auto text-left">
               Explore our premium workshops designed to boost your skills and career
             </p>
           </div>
@@ -56,13 +56,13 @@ const App = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="flex items-center"
+            className="flex items-center justify-center w-full md:w-auto "
           >
 
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "auto" }}
-              className="flex items-center bg-white border border-gray-300 rounded-full px-4 py-3"
+              className=" flex items-center bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm"
             >
               <input
                 type="text"
@@ -94,10 +94,10 @@ const App = () => {
             transition={{ delay: 0.2 }}
             className="w-64 flex-shrink-0 "
           >
-            <div className="bg-white rounded-lg p-6 shadow-sm top-[10vh] sticky h-[85vh]">
+            <div className="bg-white rounded-lg p-6 shadow-sm top-[10vh] sticky h-[75vh]">
               <h3 className="text-xl font-semibold text-gray-900 mb-2">CATEGORIES</h3>
               <hr style={{ borderColor: "black", height: '2px', backgroundColor: "black" }} />
-              <div className="flex flex-col mt-2 overflow-y-auto max-h-[75vh]">
+              <div className="flex flex-col mt-2 overflow-y-auto max-h-[66vh]">
                 {categories.map((category) => (
                   <FormControlLabel
                     key={category}
@@ -150,10 +150,7 @@ const App = () => {
                   <div className="p-6">
                     <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">{workshop.title}</h3>
                     <p className="text-sm text-gray-600 mb-4 line-clamp-2">{workshop.description}</p>
-                    <div className="flex items-center text-sm justify-center text-gray-500 gap-1 mx-auto my-2">
-                      <Users className="w-4 h-4" />
-                      <span>{workshop.participants} participants</span>
-                    </div>
+                    
                     <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />

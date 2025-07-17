@@ -41,13 +41,13 @@ const WorkshopDetail = () => {
         <div className="min-h-screen bg-gray-50">
 
             {/* Main Content */}
-            <div className="max-w-7xl mx-auto px-4 py-8 text-black">
+            <div className="max-w-7xl mx-auto px-4 py-4 text-black">
                 {/* Back Button and Title */}
-                <div className="flex items-center mb-8">
-                    <button className="flex items-center justify-center bg-gray-500 w-12 h-12 border-2 border-gray-300 rounded-lg hover:bg-black text-white transition-colors mr-8" onClick={() => { window.location.href = '/workshops' }}>
+                <div className="flex items-center mb-4">
+                    <button className="flex items-center justify-center bg-white w-12 h-12 border-2 border-gray-300 rounded-lg hover:bg-[#FECE18] text-black transition-colors mr-8" onClick={() => { window.location.href = '/workshops' }}>
                         <BackArrowIcon />
                     </button>
-                    <h1 className="text-4xl font-bold text-gray-900">
+                    <h1 className="text-[1.75em] font-bold text-gray-900 items-center">
                         About <span className="text-yellow-400">Workshop</span>
                     </h1>
                 </div>
@@ -65,8 +65,8 @@ const WorkshopDetail = () => {
                 >
                     {/* LEFT COLUMN (Title + Media Grid) */}
                     <Box sx={{ flexGrow: 1 }} className='w-full items-center'>
-                        <Typography variant="h4" fontWeight="bold" gutterBottom className="text-black px-4">
-                            Breathe & Release: A Journey Into Yoga ... {/* just the first 20 character after that.. */}
+                        <Typography variant="h5" fontWeight="bold" gutterBottom className="text-black px-6">
+                           Breathe & Release: A Journey Into Yoga ... {/* just the first 20 character after that.. */}
                         </Typography>
 
                         <Grid container spacing={2} className="w-full justify-center items-center p-2">

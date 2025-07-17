@@ -100,7 +100,7 @@ const ShoppingCart = () => {
                     <div className="lg:col-span-2">
                         {/* Back Button and Title */}
                         <div className="flex items-center mb-8">
-                            <button className="flex items-center justify-center bg-gray-500 w-12 h-12 border-2 border-gray-300 rounded-lg hover:bg-black transition-colors mr-8" onClick={()=>{window.location.href='/workshopDetail'}}>
+                            <button className="flex items-center justify-center bg-gray-500 w-12 h-12 border-2 border-gray-300 rounded-lg hover:bg-black transition-colors mr-8" onClick={()=>{window.location.href='/workshop-details'}}>
                                 <BackArrowIcon />
                             </button>
                             <h1 className="text-4xl font-bold text-gray-900">Shopping Cart</h1>
