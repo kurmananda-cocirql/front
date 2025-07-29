@@ -47,9 +47,6 @@ const WorkshopDetail = () => {
                     <button className="flex items-center justify-center bg-white w-12 h-12 border-2 border-gray-300 rounded-lg hover:bg-[#FECE18] text-black transition-colors mr-8" onClick={() => { window.location.href = '/workshops' }}>
                         <BackArrowIcon />
                     </button>
-                    <h1 className="text-[1.75em] font-bold text-gray-900 items-center">
-                        About <span className="text-yellow-400">Workshop</span>
-                    </h1>
                 </div>
 
                 {/* Workshop Detail Card */}

@@ -42,16 +42,16 @@ const App = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-4 max-w-7xl py-2  mx-auto justify-between flex flex-col md:flex-row gap-2 h-[10vh]"
+          className="text-center mb-4 max-w-7xl py-2  mx-auto justify-center flex flex-col md:flex-row gap-2 h-[10vh]"
         >
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <h1 className="text-3xl font-bold text-gray-900 text-left mb-2">
               Discover Your Next <span className="text-yellow-400">Adventure</span>
             </h1>
             <p className="text-md text-gray-600 max-w-2xl mx-auto text-left">
               Explore our premium workshops designed to boost your skills and career
             </p>
-          </div>
+          </div> */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
