@@ -14,6 +14,7 @@ import Navbar from './components/Navbar';
 import RequestWorkshopForm from './pages/coachRequestPage.jsx'
 import RequestWorkshopFormAdmin from './pages/adminRequestPage.jsx'
 import AdminApprovalPage from './pages/admin.jsx'
+import EventsPage from './pages/events.jsx'
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
   {
     path: '/admin-panel',
     element: <AdminApprovalPage />,
+  },
+  {
+    path: '/events',
+    element: <EventsPage />,
   },
 ]);
 

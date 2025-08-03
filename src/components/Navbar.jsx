@@ -57,7 +57,7 @@ const Navbar = () => {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex justify-center items-center bg-[#afafaf] py-3 px-8 text-sm"
+        className="flex justify-center items-center bg-[#FECE18] py-3 px-8 text-sm"
       >
         <span className="text-black font-medium">Where Ideas, People & Progress Come Full Circle ✨</span>
       </motion.div>
