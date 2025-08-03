@@ -4,11 +4,18 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 
 const Navbar = () => {
-  const [hoveredItem, setHoveredItem] = useState(null);
+  const [hoveredItem, setHoveredItem] = useState(null)
 
-  const rightNavItems = [{ name: "Join US", link: '' },
-  { name: "Help", link: '' },
-  { name: "Profile", link: 'auth' }];
+  const leftNavItems = [
+    { name: "Workshops", link: "/workshops" },
+    { name: "Events", link: "/events" },
+  ]
+
+  const rightNavItems = [
+    { name: "Join us", link: "/join" },
+    { name: "Help", link: "/help" },
+    { name: "Sign in", link: "/auth" },
+  ]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -16,10 +23,10 @@ const Navbar = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.3
-      }
-    }
-  };
+        delayChildren: 0.3,
+      },
+    },
+  }
 
   const itemVariants = {
     hidden: { y: -20, opacity: 0 },
@@ -29,59 +36,77 @@ const Navbar = () => {
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 10
-      }
+        damping: 10,
+      },
     },
     hover: {
       scale: 1.05,
-      transition: { duration: 0.2 }
-    }
-  };
+      transition: { duration: 0.2 },
+    },
+  }
 
   const underlineVariants = {
     hidden: { width: 0 },
-    hover: { width: "100%" }
-  };
+    hover: { width: "100%" },
+  }
 
   return (
-    <div className="w-full font-sans bg-[#FECE18] sticky justify-between top-0 z-50 shadow-sm">
+    <div className="w-full font-sans sticky top-0 z-50 shadow-sm">
+      {/* Top Banner */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex justify-end items-center bg-[#afafaf] py-2 px-8 text-xs"
+        className="flex justify-center items-center bg-[#afafaf] py-3 px-8 text-sm"
       >
-        {rightNavItems.map((item, index) => (
-          <div key={item} className="flex text-black items-center">
-            {index > 0 && <span className="mx-2">|</span>}
-            <motion.a
-              href={item.link}
-              className="text-black hover:text-gray-600 mx-2"
-              variants={itemVariants}
-              whileHover="hover"
-            >
-              {item.name}
-            </motion.a>
-          </div>
-        ))}
+        <span className="text-black font-medium">Where Ideas, People & Progress Come Full Circle ✨</span>
       </motion.div>
+
+      {/* Main Navigation */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex justify-between items-center text-black px-8"
+        className="flex justify-between items-center bg-white text-black px-8 py-4"
       >
+        {/* Left Navigation Items */}
+        <div className="flex items-center space-x-8">
+          {leftNavItems.map((item, index) => (
+            <motion.div
+              key={item.name}
+              className="relative"
+              onHoverStart={() => setHoveredItem(`left-${index}`)}
+              onHoverEnd={() => setHoveredItem(null)}
+              variants={itemVariants}
+            >
+              <a
+                href={item.link}
+                className="text-base font-medium text-gray-700 hover:text-black transition-colors duration-200"
+              >
+                {item.name}
+              </a>
+              <motion.div
+                variants={underlineVariants}
+                initial="hidden"
+                animate={hoveredItem === `left-${index}` ? "hover" : "hidden"}
+                className="absolute bottom-0 left-0 h-0.5 bg-black origin-left"
+              />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Center Logo */}
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 200 }}
-          className="mx-8"
+          className="absolute left-1/2 transform -translate-x-1/2"
         >
           <a href="/">
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
-              className="w-20 h-11 flex items-center justify-center"
+              className="w-full h-10 flex items-center justify-center"
             >
               <img
                 src="logo.png"
@@ -92,47 +117,30 @@ const Navbar = () => {
           </a>
         </motion.div>
 
-
-
-        <div className="flex items-center space-x-8">
-          <motion.div
-            className="relative"
-            onHoverStart={() => setHoveredItem(0)}
-            onHoverEnd={() => setHoveredItem(null)}
-            variants={itemVariants}
-          >
-            <a
-              href="/workshops"
-              className="text-sm font-medium text-gray-600 hover:text-black"
-            >
-              WORKSHOPS
-            </a>
+        {/* Right Navigation Items */}
+        <div className="flex items-center space-x-6">
+          {rightNavItems.map((item, index) => (
             <motion.div
-              variants={underlineVariants}
-              initial="hidden"
-              animate={hoveredItem === 0 ? "hover" : "hidden"}
-              className="absolute bottom-0 left-0 h-0.5 bg-black origin-left"
-            />
-          </motion.div>
-          <motion.div
-            className="relative space-x-3"
-            onHoverStart={() => setHoveredItem(1)}
-            onHoverEnd={() => setHoveredItem(null)}
-            variants={itemVariants}
-          >
-            <a
-              href="#"
-              className="text-sm font-medium text-gray-600 hover:text-black"
+              key={item.name}
+              className="relative"
+              onHoverStart={() => setHoveredItem(`right-${index}`)}
+              onHoverEnd={() => setHoveredItem(null)}
+              variants={itemVariants}
             >
-              EVENTS
-            </a>
-            <motion.div
-              variants={underlineVariants}
-              initial="hidden"
-              animate={hoveredItem === 1 ? "hover" : "hidden"}
-              className="absolute bottom-0 left-0 h-0.5 bg-black origin-left"
-            />
-          </motion.div>
+              <a
+                href={item.link}
+                className="text-base font-medium text-gray-700 hover:text-black transition-colors duration-200"
+              >
+                {item.name}
+              </a>
+              <motion.div
+                variants={underlineVariants}
+                initial="hidden"
+                animate={hoveredItem === `right-${index}` ? "hover" : "hidden"}
+                className="absolute bottom-0 left-0 h-0.5 bg-black origin-left"
+              />
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </div>
@@ -140,3 +148,5 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+
