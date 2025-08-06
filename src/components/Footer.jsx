@@ -19,7 +19,7 @@ const Footer = () => {
       // Changed to yellow theme (you can revert to original if needed)
       className="bg-[#FECE18] border-t shadow-inner"
     >
-      <div className="max-w-5xl mx-auto px-6 py-12 flex gap-10 text-black justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-12 flex gap-10 text-black justify-between">
         
         
 
