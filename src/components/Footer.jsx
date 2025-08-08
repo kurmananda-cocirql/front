@@ -26,7 +26,7 @@ const Footer = () => {
         <motion.div variants={fadeIn}>
           <h4 className="text-lg font-semibold text-black mb-4">Useful Links</h4>
           <ul className="space-y-2 text-sm">
-            {['Privacy Policy', 'Terms & Conditions', 'FAQs', 'Help & Support'].map((item, i) => (
+            {['Privacy Policy', 'FAQs', 'Help & Support'].map((item, i) => (
               <motion.li
                 key={i}
                 whileHover={linkHover}
@@ -43,7 +43,7 @@ const Footer = () => {
         <motion.div variants={fadeIn}>
           <h4 className="text-lg font-semibold text-black mb-4">Connect With Us</h4>
           <div className="flex space-x-4">
-            {[FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn].map((Icon, i) => (
+            {[ FaInstagram, FaLinkedinIn].map((Icon, i) => (
               <motion.a
                 key={i}
                 href="#"
