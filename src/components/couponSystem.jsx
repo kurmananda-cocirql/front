@@ -146,7 +146,7 @@ const CouponSystem = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed left-4 top-[10%] h-[60%] w-80 bg-white shadow-2xl z-50 overflow-y-auto rounded-lg"
+              className="fixed left-4 top-[30%] h-[60%] w-80 bg-white shadow-2xl z-50 overflow-y-auto rounded-lg"
             >
               <div className="p-4 h-full flex flex-col">
                 {/* Header with Progress */}

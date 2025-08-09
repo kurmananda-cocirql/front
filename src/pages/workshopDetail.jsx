@@ -154,11 +154,11 @@ const WorkshopDetail = () => {
                                 sx={{
                                     mt: 2,
                                     py: 1.4,
-                                    background: "linear-gradient(to right, #facc15, #fde68a)",
+                                    background: "linear-gradient(to left, #facc15, #fde68a)",
                                     color: "#000",
                                     fontWeight: "bold",
                                     '&:hover': {
-                                        background: "linear-gradient(to right, #facc15, #fbbf24)",
+                                        background: "linear-gradient(to left, #facc15, #fbbf24)",
                                     },
                                 }}
                             >
