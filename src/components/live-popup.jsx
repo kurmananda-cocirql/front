@@ -18,7 +18,7 @@ const LivePopup = () => {
     hidden: {
       opacity: 0,
       scale: 0.8,
-      y: 50,
+      y: 60,
     },
     visible: {
       opacity: 1,
@@ -57,7 +57,7 @@ const LivePopup = () => {
               initial="hidden"
               animate="visible"
               className="bg-white rounded-2xl shadow-2xl"
-              style={{ width: "50vw", height: "50vh", minWidth: "400px", minHeight: "300px" }}
+              style={{ width: "50vw", height: "60vh", minWidth: "400px", minHeight: "300px" }}
             >
               <div className="h-full flex items-center justify-center p-8">
                 {/* Horizontal Layout */}
