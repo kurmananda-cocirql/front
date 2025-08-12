@@ -4,21 +4,8 @@ import { useState } from "react"
 import { Search, Clock, Calendar, User, Users } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button, Checkbox, FormControlLabel } from "@mui/material"
-import { createWorkshop } from "../api/workshop"
 
 const App = () => {
-
-  const [categoys, setCategories] = useState([]);
-
-    useEffect(() => {
-    createWorkshop('hello').then(res => {
-      setCategories(res.data);
-    }).catch(err => {
-      console.error('Error fetching categories:', err);
-    });
-    console.log(categoys);
-  }, []);
-
 
 
   const [searchQuery, setSearchQuery] = useState("")

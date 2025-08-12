@@ -1,18 +1,18 @@
+// src/api/axiosInstance.js
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8181'; // Replace with your actual backend URL
-
 const axiosInstance = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: process.env.REACT_APP_API_BASE_URL || 'https://your-api.com',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
+// Add token to every request if exists
 axiosInstance.interceptors.request.use((config) => {
   const token = localStorage.getItem('access_token');
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers['Authorization'] = `Bearer ${token}`;
   }
   return config;
 });

@@ -4,7 +4,6 @@ import SignupHero from './components/sign';
 import TypeformHero from './components/TypeformHero';
 import Footer from './components/Footer';
 import CouponSystem from './components/couponSystem';
-import {getCategories} from './api/categories';
 
 const App = () => {
   const [scrollY, setScrollY] = useState(0);

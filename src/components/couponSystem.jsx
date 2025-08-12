@@ -8,6 +8,7 @@ const CouponSystem = () => {
   const [showPopup, setShowPopup] = useState(false)
   const [currentStep, setCurrentStep] = useState(0)
   const [answers, setAnswers] = useState({})
+  const [copied, setCopied] = useState(false)
 
   const introSteps = [
     {
@@ -54,7 +55,6 @@ const CouponSystem = () => {
   const isQuestionStep = currentStep >= introSteps.length && currentStep < introSteps.length + questions.length
   const isFinalStep = currentStep === totalSteps - 1
 
-  // Reset popup state when it's closed
   useEffect(() => {
     if (!showPopup) {
       setCurrentStep(0)
@@ -75,7 +75,6 @@ const CouponSystem = () => {
   }
 
   const handleStepClick = (stepIndex) => {
-    // Allow navigation to any step that's been reached or is the next step
     if (stepIndex <= Math.max(currentStep, 0)) {
       setCurrentStep(stepIndex)
     }
@@ -103,7 +102,6 @@ const CouponSystem = () => {
 
   return (
     <>
-      {/* Floating Coupon Tag - Only show if popup is NOT open */}
       {!showPopup && (
         <motion.div
           initial={{ x: -100, opacity: 0 }}
@@ -127,11 +125,9 @@ const CouponSystem = () => {
         </motion.div>
       )}
 
-      {/* Multi-Step Popup */}
       <AnimatePresence>
         {showPopup && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -140,16 +136,15 @@ const CouponSystem = () => {
               onClick={() => setShowPopup(false)}
             />
 
-            {/* Popup */}
             <motion.div
               variants={popupVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed left-4 top-[30%] h-[60%] w-80 bg-white shadow-2xl z-50 overflow-y-auto rounded-lg"
+              className="fixed left-4 top-[30%] h-[60%] w-80 bg-white shadow-2xl z-50 overflow-hidden rounded-lg"
             >
               <div className="p-4 h-full flex flex-col">
-                {/* Header with Progress */}
+                {/* Header */}
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
@@ -173,7 +168,6 @@ const CouponSystem = () => {
                     </IconButton>
                   </div>
 
-                  {/* Clickable Progress Dots */}
                   <div className="flex items-center justify-center gap-2">
                     {Array.from({ length: totalSteps }).map((_, index) => (
                       <button
@@ -203,7 +197,6 @@ const CouponSystem = () => {
                       exit="exit"
                       className="flex-1 flex flex-col"
                     >
-                      {/* Intro Steps */}
                       {isIntroStep && (
                         <div className="text-center flex-1 flex flex-col justify-center">
                           <div className="text-6xl mb-4">{introSteps[currentStep].image}</div>
@@ -212,13 +205,12 @@ const CouponSystem = () => {
                         </div>
                       )}
 
-                      {/* Question Steps */}
                       {isQuestionStep && (
                         <div className="flex-1 flex flex-col">
                           <h2 className="text-lg font-bold text-black mb-6">
                             {questions[currentStep - introSteps.length].question}
                           </h2>
-                          <div className="space-y-3 flex-1">
+                          <div className="space-y-3 flex-1 overflow-y-auto pr-1 max-h-[200px]">
                             {questions[currentStep - introSteps.length].options.map((option, index) => (
                               <button
                                 key={index}
@@ -236,7 +228,6 @@ const CouponSystem = () => {
                         </div>
                       )}
 
-                      {/* Final Coupon Step */}
                       {isFinalStep && (
                         <div className="text-center flex-1 flex flex-col justify-center">
                           <div className="inline-flex items-center justify-center w-20 h-20 bg-[#5DADE2] rounded-full mb-4 mx-auto">
@@ -249,11 +240,24 @@ const CouponSystem = () => {
                           <p className="text-sm text-black mb-4">
                             You've earned 11% off all products (on orders over ₹2,000).
                           </p>
-                          <div className="bg-gray-100 p-4 rounded-lg mb-4">
-                            <p className="text-xs text-black mb-2">Your Coupon Code:</p>
-                            <p className="text-lg font-bold text-[#5DADE2]">COCIRQL11</p>
+                          <div className="bg-gray-100 p-4 rounded-lg mb-4 flex items-center justify-between">
+                            <div>
+                              <p className="text-xs text-black mb-1">Your Coupon Code:</p>
+                              <p className="text-lg font-bold text-[#5DADE2]">COCIRQL11</p>
+                            </div>
+                            <button
+                              onClick={() => {
+                                navigator.clipboard.writeText("COCIRQL11")
+                                setCopied(true)
+                                setTimeout(() => setCopied(false), 1500)
+                              }}
+                              className="bg-[#5DADE2] hover:bg-[#4A90B8] text-white px-3 py-1 rounded-lg text-sm"
+                            >
+                              Copy
+                            </button>
                           </div>
-                          <div className="flex items-center justify-center gap-2 bg-gray-50 px-4 py-2 rounded-full mb-4">
+                          {copied && <p className="text-green-500 text-xs mb-4">Copied!</p>}
+                          <div className="flex items-center justify-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
                             <div className="w-6 h-6 bg-amber-600 rounded-full flex items-center justify-center">
                               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="text-white">
                                 <path
@@ -274,15 +278,7 @@ const CouponSystem = () => {
 
                 {/* Action Button */}
                 <div className="pt-4">
-                  {isFinalStep ? (
-                    <button
-                      onClick={() => setShowPopup(false)}
-                      className="w-full bg-[#5DADE2] hover:bg-[#4A90B8] text-white font-medium py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors duration-200"
-                    >
-                      Claim 11% off now
-                      <ArrowForward fontSize="small" />
-                    </button>
-                  ) : (
+                  {!isFinalStep && (
                     <button
                       onClick={handleNext}
                       disabled={isQuestionStep && !answers[currentStep - introSteps.length]}
