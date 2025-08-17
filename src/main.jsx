@@ -15,6 +15,8 @@ import RequestWorkshopForm from './pages/coachRequestPage.jsx'
 import RequestWorkshopFormAdmin from './pages/adminRequestPage.jsx'
 import AdminApprovalPage from './pages/admin.jsx'
 import EventsPage from './pages/events.jsx'
+import AboutPage from './pages/aboutus.jsx'
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -64,14 +66,16 @@ const router = createBrowserRouter([
     path: '/events',
     element: <EventsPage />,
   },
+  {
+    path: '/about',
+    element: <AboutPage />,
+  },
 ]);
-import LivePopup from './components/live-popup.jsx'
 createRoot(document.getElementById('root')).render(
   <div className="min-h-screen bg-white">
     <Navbar />
     <div className='top-[10vh]'>
       <StrictMode>
-        <LivePopup />
         <RouterProvider router={router} />
       </StrictMode>
     </div>

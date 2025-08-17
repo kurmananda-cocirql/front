@@ -12,14 +12,27 @@ const App = () => {
 
   const [workshops, setWorkshops] = useState([]);
 
-  useEffect(() => {
-    fetch("/workshops_data.json")
-      .then((res) => res.json())
-      .then((data) => setWorkshops(data))
-      .catch((err) => console.error("Failed to load workshops:", err));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/workshops_data.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setWorkshops(data))
+  //     .catch((err) => console.error("Failed to load workshops:", err));
+  // }, []);
 
-  const categories = ["Yoga", "Meditation", "Art", "Fitness", "Cooking", "Photography", "Music", "Dance", "Writing", "Technology", "Business", "Personal Development", "Health & Wellness", "Travel", "Language Learning", "Gardening", "Crafts", "Fashion", "Beauty", "Sports", "Finance", "Marketing", "Leadership", "Public Speaking", "Social Media", "Graphic Design", "Web Development", "Data Science", "AI & Machine Learning", "Blockchain", "Cybersecurity", "Cloud Computing", "Mobile App Development", "Game Development", "Virtual Reality", "Augmented Reality", "Robotics", "Internet of Things (IoT)", "Quantum Computing", "Sustainability", "Environmental Science", "Astronomy", "History", "Philosophy", "Psychology", "Sociology", "Anthropology", "Political Science", "Economics"]
+  const categories = [
+    "Yoga",
+    "Origami",
+    "Doodling",
+    "Healing through art",
+    "Meditation and breathwork",
+    "Creative Journaling",
+    "Calligraphy",
+    "Crocheting",
+    "Storytelling",
+    "Gardening",
+    "Candle making",
+    "Networking"
+  ]
   const [selectedCategories, setSelectedCategories] = useState(["Yoga"])
 
   const filteredWorkshops = workshops.filter((workshop) => {

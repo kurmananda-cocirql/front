@@ -4,6 +4,8 @@ import SignupHero from './components/sign';
 import TypeformHero from './components/TypeformHero';
 import Footer from './components/Footer';
 import CouponSystem from './components/couponSystem';
+import AboutPage from './pages/abouthome';
+import WorkshopTest from './datafetch/workshopAPI';
 
 const App = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -40,6 +42,7 @@ const App = () => {
       {/* Main content over it */}
       <div className="relative z-10 pt-screen bg-white">
         <SignupHero />
+        <AboutPage />
         <TypeformHero />
         <Footer />
       </div>

@@ -4,16 +4,15 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
   {
-    image:
-      "https://cinnamon.kitchen/cdn/shop/files/EXPLORE.jpg?v=1750081969&width=3000",
+    image: 'banners/Untitled design (1).png',
     link: "https://dropbox.com",
   },
   {
-    image: "https://cinnamon.kitchen/cdn/shop/files/Summer_menu_drop_1800_x_600_px.png?v=1744630121&width=3000",
+    image: "banners/5pics.png",
     link: "https://amazon.com",
   },
   {
-    image: "https://cinnamon.kitchen/cdn/shop/files/Homepage_Banner_1920X700_1.jpg?v=1706002112&width=3000",
+    image: "banners/Your paragraph text.png",
     link: "https://example.com",
   },
 ];
