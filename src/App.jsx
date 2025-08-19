@@ -11,6 +11,10 @@ const App = () => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
