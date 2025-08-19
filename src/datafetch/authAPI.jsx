@@ -1,50 +1,42 @@
-
-class LoginRequest {
-  constructor(email, password) {
-    this.email = email;
-    this.password = password;
-  }
-}
-
-async function login() {
-  const loginRequest = new LoginRequest(
-    "awesome.sunday@yopmail.com",
-    "Keval@123"
-  );
-
+// authAPI.js
+export const loginUser = async (credentials) => {
   try {
     const response = await fetch("http://31.97.224.12:14001/api/user/login", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginRequest),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(credentials),
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     const data = await response.json();
-    console.log("Login successful:", data);
 
-    // Example: store token in localStorage
-    if (data.token) {
-      localStorage.setItem("authToken", data.token);
+    // ✅ store token
+    if (data?.data?.access_token) {
+      localStorage.setItem("authToken", data.data.access_token);
+      localStorage.setItem("tokenType", data.data.token_type || "Bearer");
     }
+
+    return data;
   } catch (error) {
     console.error("Login failed:", error);
+    throw error;
   }
-}
+};
 
-login();
+export const signupUser = async (userData) => {
+  try {
+    const response = await fetch("http://31.97.224.12:14001/api/user/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
 
-// React test component
-export default function LoginTest() {
-  return (
-    <div>
-      <h1 className="text-black">Test Login</h1>
-      <button onClick={login} className="bg-black">Login</button>
-    </div>
-  );
-}
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+    return await response.json();
+  } catch (error) {
+    console.error("Signup failed:", error);
+    throw error;
+  }
+};

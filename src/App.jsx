@@ -5,7 +5,7 @@ import TypeformHero from './components/TypeformHero';
 import Footer from './components/Footer';
 import CouponSystem from './components/couponSystem';
 import AboutPage from './pages/abouthome';
-import WorkshopTest from './datafetch/workshopAPI';
+import { WorkshopTest, WorkshopPostTest } from './datafetch/workshopAPI';
 
 const App = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -25,6 +25,7 @@ const App = () => {
   return (
     <div className="relative">
       {/* Fixed Image Slider with scroll-based fading */}
+      <WorkshopPostTest />
       <div
         className="fixed w-full h-screen z-0 transition-all duration-300 ease-out"
         style={{
@@ -43,10 +44,8 @@ const App = () => {
       <div className="relative z-10 pt-screen bg-white">
         <SignupHero />
         <AboutPage />
-        <TypeformHero />
         <Footer />
       </div>
-
       <CouponSystem />
     </div>
   );

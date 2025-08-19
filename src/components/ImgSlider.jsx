@@ -5,15 +5,15 @@ import { motion, AnimatePresence } from "framer-motion";
 const slides = [
   {
     image: 'banners/Untitled design (1).png',
-    link: "https://dropbox.com",
+    link: "/",
   },
   {
     image: "banners/5pics.png",
-    link: "https://amazon.com",
+    link: "/",
   },
   {
     image: "banners/Your paragraph text.png",
-    link: "https://example.com",
+    link: "/",
   },
 ];
 
