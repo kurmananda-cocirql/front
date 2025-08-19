@@ -180,86 +180,11 @@ export default function HeroQuoteSection() {
             </Button>
           </motion.div>
 
-          {/* Decorative Elements */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-            style={{
-              position: "absolute",
-              top: "20%",
-              left: "10%",
-              width: "100px",
-              height: "100px",
-              background: "linear-gradient(45deg, rgba(218, 165, 32, 0.15), rgba(255, 215, 0, 0.25))",
-              borderRadius: "50%",
-              zIndex: -1,
-            }}
-          />
+          
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
-            style={{
-              position: "absolute",
-              bottom: "15%",
-              right: "15%",
-              width: "80px",
-              height: "80px",
-              background: "linear-gradient(45deg, rgba(184, 134, 11, 0.15), rgba(218, 165, 32, 0.25))",
-              borderRadius: "50%",
-              zIndex: -1,
-            }}
-          />
         </motion.div>
       </Container>
 
-      {/* Floating Animation Elements */}
-      <motion.div
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 5, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-        style={{
-          position: "absolute",
-          top: "10%",
-          right: "5%",
-          width: "60px",
-          height: "60px",
-          background: "linear-gradient(45deg, rgba(218, 165, 32, 0.2), rgba(255, 215, 0, 0.3))",
-          borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",
-          zIndex: 1,
-        }}
-      />
-
-      <motion.div
-        animate={{
-          y: [0, 15, 0],
-          rotate: [0, -3, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-        style={{
-          position: "absolute",
-          bottom: "10%",
-          left: "8%",
-          width: "40px",
-          height: "40px",
-          background: "linear-gradient(45deg, rgba(255, 215, 0, 0.25), rgba(218, 165, 32, 0.35))",
-          borderRadius: "70% 30% 30% 70% / 70% 70% 30% 30%",
-          zIndex: 1,
-        }}
-      />
     </Box>
   )
 }

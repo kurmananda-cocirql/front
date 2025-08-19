@@ -50,7 +50,7 @@ const CouponSystem = () => {
     },
   ]
 
-  const totalSteps = introSteps.length + questions.length + 1 // +1 for final coupon step
+  const totalSteps = introSteps.length + questions.length + 1
   const isIntroStep = currentStep < introSteps.length
   const isQuestionStep = currentStep >= introSteps.length && currentStep < introSteps.length + questions.length
   const isFinalStep = currentStep === totalSteps - 1
@@ -86,11 +86,7 @@ const CouponSystem = () => {
 
   const popupVariants = {
     hidden: { x: "-100%", opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 },
-    },
+    visible: { x: 0, opacity: 1, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } },
     exit: { x: "-100%", opacity: 0, transition: { duration: 0.4 } },
   }
 
@@ -102,28 +98,7 @@ const CouponSystem = () => {
 
   return (
     <>
-      {!showPopup && (
-        <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 3, duration: 0.8 }}
-          className="fixed left-4 bottom-10 z-30"
-        >
-          <motion.button
-            onClick={() => setShowPopup(true)}
-            whileHover={{ scale: 1.05, x: 10 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-[#5DADE2] text-white px-4 py-2 rounded-r-full shadow-lg cursor-pointer flex items-center gap-2 min-h-[10vh]"
-          >
-            <div className="text-center">
-              <div className="text-xs font-bold">COUPON</div>
-              <div className="text-lg font-bold">11%</div>
-              <div className="text-xs">OFF</div>
-            </div>
-            <div className="text-xl">🎁</div>
-          </motion.button>
-        </motion.div>
-      )}
+      {!showPopup && <CouponButton onClick={() => setShowPopup(true)} />}
 
       <AnimatePresence>
         {showPopup && (
@@ -168,6 +143,7 @@ const CouponSystem = () => {
                     </IconButton>
                   </div>
 
+                  {/* Progress Dots */}
                   <div className="flex items-center justify-center gap-2">
                     {Array.from({ length: totalSteps }).map((_, index) => (
                       <button
@@ -178,8 +154,8 @@ const CouponSystem = () => {
                           index <= currentStep
                             ? "w-3 h-3 bg-[#5DADE2] rounded-full hover:scale-110"
                             : index === currentStep + 1
-                              ? "w-2 h-2 bg-[#5DADE2] bg-opacity-50 rounded-full hover:scale-110"
-                              : "w-2 h-2 bg-gray-200 rounded-full"
+                            ? "w-2 h-2 bg-[#5DADE2] bg-opacity-50 rounded-full hover:scale-110"
+                            : "w-2 h-2 bg-gray-200 rounded-full"
                         }`}
                       />
                     ))}
@@ -257,19 +233,6 @@ const CouponSystem = () => {
                             </button>
                           </div>
                           {copied && <p className="text-green-500 text-xs mb-4">Copied!</p>}
-                          <div className="flex items-center justify-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
-                            <div className="w-6 h-6 bg-amber-600 rounded-full flex items-center justify-center">
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="text-white">
-                                <path
-                                  d="M12 2L12 22M2 12L22 12"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                />
-                              </svg>
-                            </div>
-                            <span className="text-sm font-medium text-black">PCOS Friendly</span>
-                          </div>
                         </div>
                       )}
                     </motion.div>
@@ -299,3 +262,30 @@ const CouponSystem = () => {
 }
 
 export default CouponSystem
+
+
+function CouponButton({ onClick }) {
+  return (
+    <motion.div
+      initial={{ x: -100, opacity: 0.6 }} // 👈 mostly hidden to the left
+      animate={{ x: -80, opacity: 0.8 }} // 👈 slight peek
+      whileHover={{ x: 5, opacity: 1 }}  // 👈 slide fully into view on hover
+      transition={{ type: "spring", stiffness: 120, damping: 15 }}
+      className="fixed left-0 bottom-10 z-30"
+    >
+      <motion.button
+        onClick={onClick}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="bg-[#5DADE2] text-white px-4 py-2 rounded-r-full shadow-lg cursor-pointer flex items-center gap-2 min-h-[10vh] pointer-events-auto"
+      >
+        <div className="text-center">
+          <div className="text-xs font-bold">COUPON</div>
+          <div className="text-lg font-bold">11%</div>
+          <div className="text-xs">OFF</div>
+        </div>
+        <div className="text-xl">🎁</div>
+      </motion.button>
+    </motion.div>
+  )
+}

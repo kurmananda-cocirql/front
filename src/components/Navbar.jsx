@@ -67,7 +67,8 @@ const Navbar = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex justify-between items-center bg-white text-black px-8 py-4"
+        className="flex justify-between items-center bg-white/90 backdrop-blur-md text-black 
+             px-8 py-4 shadow-sm"
       >
         {/* Left Navigation Items */}
         <div className="flex items-center space-x-8">

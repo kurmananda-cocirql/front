@@ -95,75 +95,7 @@ export default function AboutPage() {
       >
       
 
-        {/* What You'll Find Section */}
-        <motion.div variants={itemVariants} className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 text-center mb-12">What Awaits You at CoCirql</h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <motion.div
-              variants={itemVariants}
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="text-4xl mb-4">🧘‍♀️</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Move. Breathe. Flow.</h3>
-              <p className="text-gray-600">
-                Yoga mats, deep breaths, healing sounds — find your calm and connect with your body and mind.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="text-4xl mb-4">🎨</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Make. Mess. Magic.</h3>
-              <p className="text-gray-600">
-                Paint, doodle, scribble — express without limits. Here, creativity has no rules.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="text-4xl mb-4">🌿</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Grow. Craft. Bloom.</h3>
-              <p className="text-gray-600">
-                Get your hands dirty — journaling, DIY, gardening, and everything that sparks slow joy.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="text-4xl mb-4">💬</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Talk. Meet. Click.</h3>
-              <p className="text-gray-600">
-                Interest-led circles designed to connect you with people who share your mindset.
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Categories Section */}
-        <motion.div variants={itemVariants} className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 text-center mb-12">Explore Our Categories</h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categories.map((category, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                <div className="text-3xl mb-4">{category.icon}</div>
-                <h3 className="text-lg font-bold text-gray-800 mb-3">{category.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{category.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        
 
         {/* How It Works Section */}
         <motion.div variants={itemVariants} className="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-16">

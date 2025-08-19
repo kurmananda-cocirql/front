@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
   {
-    image: 'banners/Untitled design (1).png',
+    image: '',
     link: "/",
   },
   {
@@ -12,7 +12,7 @@ const slides = [
     link: "/",
   },
   {
-    image: "banners/Your paragraph text.png",
+    image: "",
     link: "/",
   },
 ];

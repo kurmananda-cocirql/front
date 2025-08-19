@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Search, Clock, Calendar, User, Users } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button, Checkbox, FormControlLabel } from "@mui/material"
+import { fetchWorkshops } from "../datafetch/workshopAPI"
 
 const App = () => {
 
@@ -12,6 +13,14 @@ const App = () => {
 
   const [workshops, setWorkshops] = useState([]);
 
+  useEffect(() => {
+    async function loadWorkshops() {
+      const data = await fetchWorkshops();
+      setWorkshops(data);
+    }
+
+    loadWorkshops();
+  }, []);
   // useEffect(() => {
   //   fetch("/workshops_data.json")
   //     .then((res) => res.json())
@@ -33,12 +42,12 @@ const App = () => {
     "Candle making",
     "Networking"
   ]
-  const [selectedCategories, setSelectedCategories] = useState(["Yoga"])
+  const [selectedCategories, setSelectedCategories] = useState([])
 
   const filteredWorkshops = workshops.filter((workshop) => {
     const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(workshop.category)
     const matchesSearch =
-      workshop.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      workshop.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       workshop.description.toLowerCase().includes(searchQuery.toLowerCase())
     return matchesCategory && matchesSearch
   })
@@ -165,7 +174,7 @@ const App = () => {
                   <div className="p-6">
                     <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">{workshop.title}</h3>
                     <p className="text-sm text-gray-600 mb-4 line-clamp-2">{workshop.description}</p>
-                    
+
                     <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />

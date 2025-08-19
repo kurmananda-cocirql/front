@@ -46,7 +46,7 @@ const Footer = () => {
             {[ FaInstagram, FaLinkedinIn].map((Icon, i) => (
               <motion.a
                 key={i}
-                href="#"
+                href={i === 0 ? "https://www.instagram.com/cocirql/" : "https://www.linkedin.com/company/cocirql"}
                 whileHover={iconHover}
                 transition={{ type: 'spring', stiffness: 400 }}
                 className="text-black hover:text-white transition"

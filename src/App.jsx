@@ -5,7 +5,7 @@ import TypeformHero from './components/TypeformHero';
 import Footer from './components/Footer';
 import CouponSystem from './components/couponSystem';
 import AboutPage from './pages/abouthome';
-import { WorkshopTest, WorkshopPostTest } from './datafetch/workshopAPI';
+import {  WorkshopPostTest } from './datafetch/workshopAPI';
 
 const App = () => {
   const [scrollY, setScrollY] = useState(0);
