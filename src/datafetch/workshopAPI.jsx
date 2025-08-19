@@ -3,7 +3,7 @@ import React from "react";
 
 export async function fetchWorkshops() {
   try {
-    const res = await fetch("https://31.97.224.12:14001/api/workshop/public/all", {
+    const res = await fetch("http://31.97.224.12:14001/api/workshop/public/all", {
       method: "GET",
       headers: {
         "Accept": "application/json",
