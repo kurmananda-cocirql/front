@@ -32,7 +32,7 @@ const Footer = () => {
                 whileHover={linkHover}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <a href="#" className="hover:text-white transition-all">
+                <a href={`${i === 0 ? '/privacy' : i === 1 ? '/faqs' : '/help'}`} className="hover:text-white transition-all">
                   {item}
                 </a>
               </motion.li>

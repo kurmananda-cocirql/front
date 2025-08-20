@@ -16,6 +16,9 @@ import RequestWorkshopFormAdmin from './pages/adminRequestPage.jsx'
 import AdminApprovalPage from './pages/admin.jsx'
 import EventsPage from './pages/events.jsx'
 import AboutPage from './pages/aboutus.jsx'
+import PrivacyPage from './pages/privacy.jsx'
+import FAQPage from './pages/faq.jsx'
+import HelpSupportPage from './pages/help.jsx'
 
 const router = createBrowserRouter([
   {
@@ -69,6 +72,18 @@ const router = createBrowserRouter([
   {
     path: '/about',
     element: <AboutPage />,
+  },
+  {
+    path: '/privacy',
+    element: <PrivacyPage />,
+  },
+  {
+    path: '/faqs',
+    element: <FAQPage />,
+  },
+  {
+    path: '/help',
+    element: <HelpSupportPage />,
   },
 ]);
 createRoot(document.getElementById('root')).render(
