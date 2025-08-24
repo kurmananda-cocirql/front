@@ -105,11 +105,10 @@ export default function HeroQuoteSection() {
               variant="h1"
               component="h1"
               sx={{
-                fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4.5rem", lg: "5.5rem" },
+                fontSize: {sm: "2rem", md: "3rem", lg: "4rem" },
                 fontWeight: 300,
                 lineHeight: 1.2,
                 color: "#1a1a1a",
-                fontFamily: '"Playfair Display", serif',
                 marginBottom: { xs: 2, md: 3 },
                 position: "relative",
               }}
@@ -143,6 +142,7 @@ export default function HeroQuoteSection() {
           <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
             <Button
               variant="contained"
+              href="/about"
               size="large"
               endIcon={
                 <motion.div

@@ -107,7 +107,7 @@ const Navbar = () => {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
-              className="w-full h-10 flex items-center justify-center"
+              className="w-full h-13 flex items-center justify-center"
             >
               <img
                 src="logo.png"

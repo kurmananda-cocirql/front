@@ -12,41 +12,51 @@ const CouponSystem = () => {
 
   const introSteps = [
     {
-      title: "Welcome to The Cinnamon Kitchen!",
+      title: "Welcome to CoCirql!",
       content:
-        "Diagnosed with PCOS as a teen, I began experimenting with healthy recipes, sharing my journey on Instagram.",
-      image: "🌿",
-    },
-    {
-      title: "Our Mission",
-      content:
-        "This blooming inspired me and I started The Cinnamon Kitchen, offering wholesome, vegan, gluten-free snacks.",
-      image: "🍪",
-    },
-    {
-      title: "Celebrity Approved",
-      content:
-        "Loved by Malaika Arora, Simran Khosla, and Namita Dubey. Join thousands who trust our PCOS-friendly products.",
-      image: "⭐",
+        "",
+      image: "",
     },
   ]
 
   const questions = [
     {
-      question: "What's your primary health goal?",
-      options: ["Weight Management", "PCOS Support", "General Wellness", "Energy Boost"],
+      question: "What sounds like your perfect way to unwind after a long day?",
+      options: [
+        "Journaling with a warm drink",
+        "A yoga or breathwork session",
+        "Talking to someone new",
+        "Tending to my plants",
+      ],
     },
     {
-      question: "What's your preferred snack time?",
-      options: ["Morning", "Afternoon", "Evening", "Late Night"],
+      question: "How often do you explore new hobbies or experiences?",
+      options: [
+        "All the time",
+        "Once in a while",
+        "When something really excites me",
+        "I want to start now",
+      ],
     },
     {
-      question: "Which dietary preference suits you?",
-      options: ["Vegan", "Gluten-Free", "Sugar-Free", "All Natural"],
+      question:
+        "You walk into a room full of strangers. What do you do first? (specify with regards to a class/workshop)",
+      options: [
+        "Find a quiet corner and observe",
+        "Look for someone who looks friendly to chat with",
+        "Jump into the nearest group convo!",
+        "Depends on my mood",
+      ],
     },
     {
-      question: "How often do you snack?",
-      options: ["Daily", "Few times a week", "Occasionally", "Rarely"],
+      question: "If you could join a circle right now, it would be to...",
+      options: [
+        "Learn something artistic",
+        "Calm my mind and body",
+        "Build meaningful connections",
+        "Try something completely new",
+        "Add joy to my routine",
+      ],
     },
   ]
 
@@ -116,7 +126,7 @@ const CouponSystem = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed left-4 top-[30%] h-[60%] w-80 bg-white shadow-2xl z-50 overflow-hidden rounded-lg"
+              className="fixed left-4 top-[15%] h-[80%] w-80 bg-white shadow-2xl z-50 overflow-hidden rounded-lg"
             >
               <div className="p-4 h-full flex flex-col">
                 {/* Header */}
@@ -186,7 +196,7 @@ const CouponSystem = () => {
                           <h2 className="text-lg font-bold text-black mb-6">
                             {questions[currentStep - introSteps.length].question}
                           </h2>
-                          <div className="space-y-3 flex-1 overflow-y-auto pr-1 max-h-[200px]">
+                          <div className="space-y-3 flex-1 overflow-y-auto pr-1 h-[300px]">
                             {questions[currentStep - introSteps.length].options.map((option, index) => (
                               <button
                                 key={index}

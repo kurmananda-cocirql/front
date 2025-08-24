@@ -19,6 +19,7 @@ import AboutPage from './pages/aboutus.jsx'
 import PrivacyPage from './pages/privacy.jsx'
 import FAQPage from './pages/faq.jsx'
 import HelpSupportPage from './pages/help.jsx'
+import PaymentPage from './pages/payment.jsx'
 
 const router = createBrowserRouter([
   {
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
   {
     path: '/help',
     element: <HelpSupportPage />,
+  },
+  {
+    path: '/payment',
+    element: <PaymentPage />,
   },
 ]);
 createRoot(document.getElementById('root')).render(

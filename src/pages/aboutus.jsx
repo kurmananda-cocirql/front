@@ -108,25 +108,20 @@ export default function AboutPage() {
         <motion.div variants={itemVariants} className="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-16">
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-700 leading-relaxed mb-6">
-              At CoCirql, we're reimagining how people connect, learn, and grow—through shared passions and everyday
-              hobbies. We're bringing connection back—through hobbies that spark curiosity and communities that feel
-              like home.
+              At CoCirql, we’re bringing connection back - through hobbies that feel like home.
+
             </p>
 
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              Whether it's exploring yoga, learning the art of storytelling, doodling for joy, or baking for the soul —
-              we bring together passionate coaches and curious learners in one vibrant space. No pressure, no
-              perfection— just the joy of learning something new, at your own pace, with a community that gets it.
+              Whether it’s exploring yoga, learning the art of storytelling, doodling for joy, or baking for the soul-  we bring together passionate coaches and curious learners in one vibrant space. No pressure, no perfection-  just the joy of learning something new, at your own pace, with a community that gets it.
             </p>
 
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              We're building a platform where workshops aren't just classes— they're circles. Circles of shared
-              experiences, ideas, laughs, and lightbulb moments. CoCirql is your invitation to reconnect - with
-              yourself, your passions, and people like you.
+              We’re building a platform where workshops aren’t just classes-  they’re circles. Circles of shared experiences, ideas, laughs, and lightbulb moments. <br />CoCirql is your invitation to reconnect - with yourself, your passions, and people like you.
             </p>
 
             <div className="bg-gradient-to-r from-[#FECE18] to-[#FFD700] text-black p-6 rounded-xl text-center">
-              <p className="text-xl font-semibold">"Build Real Circles Through What You Love."</p>
+              <p className="text-xl font-semibold">"A Creative Circle just built for you."</p>
             </div>
           </div>
         </motion.div>

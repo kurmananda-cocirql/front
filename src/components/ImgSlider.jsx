@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
   {
-    image: '',
+    image: 'banners/WhatsApp Image 2025-08-20 at 23.34.00_0f4fb679.jpg',
     link: "/",
   },
   {
@@ -12,7 +12,7 @@ const slides = [
     link: "/",
   },
   {
-    image: "",
+    image: "banners/WhatsApp Image 2025-08-20 at 23.34.00_45ebe614.jpg",
     link: "/",
   },
 ];
@@ -76,7 +76,7 @@ const ImageSlider = () => {
       className="z-0"
       position="fixed"
       width="100%"
-      height="70vh"
+      height="45vw"
       sx={{ overflow: "hidden", backgroundColor: "#000" }}
     >
       <AnimatePresence initial={false} custom={direction}>

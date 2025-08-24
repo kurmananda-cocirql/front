@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
   Box,
   TextField,
@@ -26,6 +26,9 @@ import {
   Delete,
 } from "@mui/icons-material"
 
+// ✅ import your API helpers (no UI changes)
+import { fetchCategories as fetchCategoriesAPI, createWorkshop } from "../datafetch/workshopAPI"
+
 const currencyOptions = ["USD", "INR", "EUR", "GBP"]
 
 const MANDATORY_FIELDS = [
@@ -40,6 +43,7 @@ const MANDATORY_FIELDS = [
   "totalSessions",
 ]
 
+// kept for fallback if API fails; **not used** if API returns categories
 const CATEGORIES = [
   "Design",
   "Technology",
@@ -93,6 +97,28 @@ export default function WorkshopRequestForm({ onBack }) {
   const [uploadedVideo, setUploadedVideo] = useState(null)
   const [uploadedImages, setUploadedImages] = useState([])
   const [dragOver, setDragOver] = useState({ video: false, images: false })
+
+  // ✅ categories from API (no UI changes; just replace data source)
+  const [apiCategories, setApiCategories] = useState([])
+  const [loadingCategories, setLoadingCategories] = useState(false)
+
+  useEffect(() => {
+    let mounted = true
+    ;(async () => {
+      try {
+        setLoadingCategories(true)
+        const cats = await fetchCategoriesAPI()
+        if (mounted) setApiCategories(Array.isArray(cats) ? cats : [])
+      } catch (e) {
+        console.error("Failed to fetch categories:", e)
+      } finally {
+        if (mounted) setLoadingCategories(false)
+      }
+    })()
+    return () => {
+      mounted = false
+    }
+  }, [])
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -179,18 +205,33 @@ export default function WorkshopRequestForm({ onBack }) {
   }
 
   const isFormValid = () => {
-    const mandatoryFilled = MANDATORY_FIELDS.every((field) => formData[field].trim() !== "")
+    const mandatoryFilled = MANDATORY_FIELDS.every((field) => (formData[field] ?? "").trim() !== "")
     const noErrors = Object.values(errors).every((error) => error === "")
     const emailValid = formData.email ? validateEmail(formData.email) : false
     const phoneValid = formData.phone ? validatePhone(formData.phone) : false
     return mandatoryFilled && noErrors && emailValid && phoneValid
   }
 
-  const handleSubmit = () => {
-    if (isFormValid()) {
-      console.log("Form submitted:", { formData, uploadedVideo, uploadedImages })
+  // ✅ Submit via API (kept your button, just wired the call)
+  const handleSubmit = async () => {
+    if (!isFormValid()) return
+
+    try {
+      // Pack payload. You can adapt this shape if your backend expects different keys.
+      const payload = {
+        ...formData,
+        // keep uploaded files names only; adjust if your API accepts multipart
+        uploadedVideoName: uploadedVideo?.name || null,
+        uploadedImagesNames: uploadedImages.map((f) => f.name),
+      }
+
+      const res = await createWorkshop(payload)
+      console.log("Workshop created:", res)
       alert("Workshop request submitted successfully!")
       onBack?.()
+    } catch (err) {
+      console.error(err)
+      alert("Failed to create workshop: " + (err?.message || "Unknown error"))
     }
   }
 
@@ -519,25 +560,36 @@ export default function WorkshopRequestForm({ onBack }) {
                   "& .MuiInputLabel-root.Mui-focused": { color: "#FECE18" },
                 }}
               />
+
+              {/* ✅ Category Select now uses API categories (falls back to constants) */}
               <FormControl fullWidth>
                 <InputLabel>Category *</InputLabel>
                 <Select
                   value={formData.category}
                   onChange={(e) => handleInputChange("category", e.target.value)}
                   label="Category *"
+                  displayEmpty
                   sx={{
                     "& .MuiOutlinedInput-notchedOutline": { borderColor: "#cccccc", borderWidth: 2 },
                     "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: "#FECE18" },
                     "&.Mui-focused .MuiOutlinedInput-notchedOutline": { borderColor: "#FECE18", borderWidth: 2 },
                   }}
                 >
-                  {CATEGORIES.map((category) => (
-                    <MenuItem key={category} value={category}>
-                      {category}
-                    </MenuItem>
-                  ))}
+                  {/* If API returned items (id/name), show them; else show your static list */}
+                  {apiCategories.length > 0
+                    ? apiCategories.map((c) => (
+                        <MenuItem key={c.id ?? c._id ?? c.name} value={c.id ?? c._id ?? c.name}>
+                          {c.name ?? c.title ?? String(c.id ?? c._id ?? c)}
+                        </MenuItem>
+                      ))
+                    : CATEGORIES.map((category) => (
+                        <MenuItem key={category} value={category}>
+                          {category}
+                        </MenuItem>
+                      ))}
                 </Select>
               </FormControl>
+
               <TextField
                 fullWidth
                 type="date"
@@ -1151,6 +1203,19 @@ export default function WorkshopRequestForm({ onBack }) {
             >
               Submit Application
             </Button>
+
+            {/* optional: tiny status hint for categories */}
+            <Typography
+              variant="caption"
+              sx={{ display: "block", mt: 1, color: "#777" }}
+            >
+              {loadingCategories
+                ? "Loading categories..."
+                : apiCategories.length > 0
+                ? "Categories loaded from API"
+                : "Using default categories"}
+            </Typography>
+
             {!isFormValid() && (
               <Typography
                 variant="body2"
