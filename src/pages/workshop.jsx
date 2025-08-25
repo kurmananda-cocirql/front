@@ -121,7 +121,7 @@ const App = () => {
             <div className="bg-white rounded-lg p-6 shadow-sm top-[10vh] sticky h-[75vh]">
               <h3 className="text-xl font-semibold text-gray-900 mb-2">CATEGORIES</h3>
               <hr style={{ borderColor: "black", height: '2px', backgroundColor: "black" }} />
-              <div className="flex flex-col mt-2 overflow-y-auto max-h-[66vh]">
+              <div className="flex flex-col mt-2 overflow-y-auto max-h-[63vh]">
                 {categories.map((category) => (
                   <FormControlLabel
                     key={category}
@@ -149,7 +149,6 @@ const App = () => {
                 ))}
               </div>
             </div>
-            <div className="w-full block">a</div>
           </motion.div>
 
 

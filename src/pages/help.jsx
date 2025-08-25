@@ -32,9 +32,9 @@ export default function HelpSupportPage() {
       icon: <Email className="text-3xl" />,
       title: "Email Support",
       description: "Get detailed help via email. We typically respond within 24 hours.",
-      contact: "info@cocirql.com",
+      contact: "support@cocirql.com",
       action: "Send Email",
-      link: "mailto:info@cocirql.com",
+      link: "mailto:support@cocirql.com",
       color: "bg-blue-50 border-blue-200",
       iconColor: "text-blue-600",
     },
@@ -47,26 +47,6 @@ export default function HelpSupportPage() {
       link: "/faqs",
       color: "bg-green-50 border-green-200",
       iconColor: "text-green-600",
-    },
-    {
-      icon: <ContactSupport className="text-3xl" />,
-      title: "General Support",
-      description: "For account issues, technical problems, or general inquiries.",
-      contact: "support@cocirql.com",
-      action: "Contact Support",
-      link: "mailto:support@cocirql.com",
-      color: "bg-purple-50 border-purple-200",
-      iconColor: "text-purple-600",
-    },
-    {
-      icon: <Schedule className="text-3xl" />,
-      title: "Workshop Support",
-      description: "Need help with bookings, cancellations, or workshop-related questions?",
-      contact: "workshops@cocirql.com",
-      action: "Get Workshop Help",
-      link: "mailto:workshops@cocirql.com",
-      color: "bg-orange-50 border-orange-200",
-      iconColor: "text-orange-600",
     },
   ]
 
@@ -117,9 +97,9 @@ export default function HelpSupportPage() {
         </motion.div>
 
         {/* Contact Options */}
-        <motion.div variants={itemVariants} className="mb-16">
+        <motion.div variants={itemVariants} className="mb-16 mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Get in Touch</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
             {supportOptions.map((option, index) => (
               <motion.div
                 key={index}
@@ -145,7 +125,7 @@ export default function HelpSupportPage() {
         </motion.div>
 
         {/* Quick Help Topics */}
-        <motion.div variants={itemVariants} className="mb-16">
+        <motion.div variants={itemVariants} className="mb-16 ">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Quick Help Topics</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {quickHelp.map((category, index) => (
@@ -181,10 +161,10 @@ export default function HelpSupportPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:info@cocirql.com?subject=Urgent Support Needed"
+                href="mailto:support@cocirql.com?subject=Urgent Support Needed"
                 className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300"
               >
-                Email: info@cocirql.com
+                Email: support@cocirql.com
               </a>
               <a
                 href="mailto:support@cocirql.com?subject=Technical Issue"
@@ -279,13 +259,13 @@ export default function HelpSupportPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:info@cocirql.com?subject=General Inquiry"
+                href="mailto:support@cocirql.com?subject=General Inquiry"
                 className="bg-[#FECE18] hover:bg-[#E6B800] text-black font-semibold px-8 py-3 rounded-lg transition-colors duration-300"
               >
-                Email: info@cocirql.com
+                Email: support@cocirql.com
               </a>
               <a
-                href="mailto:info@cocirql.com?subject=Feedback"
+                href="mailto:support@cocirql.com?subject=Feedback"
                 className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300"
               >
                 Send Feedback

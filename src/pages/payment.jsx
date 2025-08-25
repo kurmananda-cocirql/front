@@ -57,11 +57,11 @@ export default function PaymentPage() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-[#FECE18] to-orange-400 rounded-full mb-6 shadow-lg">
             <QrCodeScanner className="text-white text-3xl" />
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-indigo-900 bg-clip-text text-transparent mb-6">
+          <h1 className="text-5xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-indigo-900 bg-clip-text text-transparent mb-6">
             Make a Payment
           </h1>
           <div className="w-32 h-1 bg-gradient-to-r from-[#FECE18] to-orange-400 mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Complete your workshop booking with our secure UPI payment system.
             <span className="text-purple-600 font-semibold"> Quick, secure, and instant.</span>
           </p>
@@ -177,6 +177,7 @@ export default function PaymentPage() {
                   "Scan the QR code above",
                   `Enter amount ${selectedAmount ? `₹${selectedAmount}` : ""} and complete payment`,
                   "Take a screenshot of the payment confirmation",
+                  "Your payment confirmation via email in 24 hours.",
                 ].map((instruction, index) => (
                   <motion.div
                     key={index}

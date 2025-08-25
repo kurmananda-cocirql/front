@@ -395,16 +395,10 @@ export default function PrivacyPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="mailto:privacy@cocirql.com"
+                  href="mailto:support@cocirql.com"
                   className="bg-[#FECE18] hover:bg-[#E6B800] text-black font-semibold px-6 py-3 rounded-lg transition-colors duration-300 text-center"
                 >
-                  Email: privacy@cocirql.com
-                </a>
-                <a
-                  href="mailto:support@cocirql.com"
-                  className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300 text-center"
-                >
-                  General Support
+                  Email: support@cocirql.com
                 </a>
               </div>
             </div>
